@@ -6,8 +6,12 @@ This repository is the public download and portfolio surface. It intentionally d
 
 ## Download
 
-Download the current portable Windows preview from the `downloads/` folder or from the GitHub Releases page once published.
+Download the current Windows preview from the `downloads/` folder or from the GitHub Releases page once published. The setup installer is the recommended path for users who do not already have development tooling installed.
 
+- `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe`
+- `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe.sha256.txt`
+- `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi`
+- `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi.sha256.txt`
 - `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip`
 - `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip.sha256.txt`
 
@@ -17,7 +21,7 @@ Public preview beta. Use test or non-critical data first.
 
 Known areas still in progress:
 
-- installer and updater pipeline
+- updater pipeline
 - code signing
 - NAS and cloud connector polish
 - full multimodal inference

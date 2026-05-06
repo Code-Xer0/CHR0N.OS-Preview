@@ -1,0 +1,1 @@
+ede503844b3951dc8964c968c8343f33deeff6ce268e09db1ac55fa92986c8cd  CHRON.OS-v0.1.0-beta.1-windows-setup.exe

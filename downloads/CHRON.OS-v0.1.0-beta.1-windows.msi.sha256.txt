@@ -1,0 +1,1 @@
+4716981842288a1f8e4ca0475a34c7ebf2c794357a81a1a4b3b05bd4bf5b4bd5  CHRON.OS-v0.1.0-beta.1-windows.msi
