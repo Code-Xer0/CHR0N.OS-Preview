@@ -1,4 +1,4 @@
-﻿# CHRON.OS Preview
+# CHRON.OS Preview
 
 CHRON.OS is a local-first archival intelligence preview for Windows. It helps users copy important files into a working archive, preserve provenance, inspect context, and begin assigning meaning without mutating original source files.
 
@@ -6,22 +6,22 @@ This repository is the public download and portfolio surface. It intentionally d
 
 ## Download
 
-Download the current Windows preview from the `downloads/` folder or from the GitHub Releases page once published.
+Current public beta: [v0.2.0-beta.1](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/tag/v0.2.0-beta.1)
 
 Recommended for most Windows users:
 
-- `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe`
-- `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe.sha256.txt`
+- [One-click Windows installer](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe)
+- [Installer SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe.sha256.txt)
 
 Optional package/installer artifact:
 
-- `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi`
-- `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi.sha256.txt`
+- [MSI package](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows.msi)
+- [MSI SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows.msi.sha256.txt)
 
-Portable/no-install option for users who already have the required runtime pieces or want no-install testing:
+Portable/no-install option for advanced testing:
 
-- `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip`
-- `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip.sha256.txt`
+- [Portable Windows ZIP](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-portable-windows.zip)
+- [Portable ZIP SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-portable-windows.zip.sha256.txt)
 
 ## Status
 

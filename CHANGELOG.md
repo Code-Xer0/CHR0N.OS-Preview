@@ -1,4 +1,25 @@
-﻿# Changelog
+# Changelog
+
+## v0.2.0-beta.1 - 2026-05-07
+
+Second public Windows beta focused on release readiness and installability.
+
+Includes:
+
+- one-click Windows installer promoted as the primary public download
+- bundled CHRON.OS server startup improved for silent/background launch
+- app UI version/channel updated to v0.2.0-beta.1 / Beta channel
+- Google connector credential import and OAuth callback handling hardened
+- CHRON.OS to Mnem.OS bridge dry-run and loopback smoke stubs added
+- public preview site download links now route through GitHub Releases
+- portable ZIP remains available for advanced no-install testing
+
+Known limitations:
+
+- public beta; use test/non-critical data first
+- Windows may warn on unsigned beta builds
+- MSI/internal product version is 0.2.0 while the public release tag and UI are v0.2.0-beta.1
+- OAuth production verification, NAS polish, updater, full media inference, and WebGL Atlas optimization remain in progress
 
 ## v0.1.0-beta.1
 
