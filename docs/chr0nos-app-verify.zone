@@ -1,0 +1,7 @@
+; GitHub Pages domain verification TXT record — chr0nos.app
+; Import: Cloudflare → chr0nos.app → DNS → Records → Import and Export
+; Leave "Proxy imported DNS records" UNCHECKED
+
+$ORIGIN chr0nos.app.
+
+_github-pages-challenge-Code-Xer0  300  IN  TXT  "cac8d819d1d67689e09adbfc8ebad1"
