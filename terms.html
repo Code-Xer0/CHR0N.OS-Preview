@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — CHRON.OS · Hyperion Industries</title>
+  <style>
+    :root {
+      --ink: #04081a;
+      --cyan: #00D9FF;
+      --ice: #E6F0F7;
+      --ice-mute: rgba(230,240,247,.55);
+      --mono: 'JetBrains Mono', 'Fira Mono', monospace;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--ink); color: var(--ice); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
+    a { color: var(--cyan); text-underline-offset: 3px; }
+    a:hover { opacity: .8; }
+    .topbar {
+      background: rgba(4,8,26,.92);
+      border-bottom: 1px solid rgba(0,217,255,.12);
+      padding: 8px 24px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ice-mute);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar a { color: var(--ice-mute); text-decoration: none; }
+    .topbar a:hover { color: var(--cyan); }
+    .wrap { max-width: 780px; margin: 0 auto; padding: 64px 24px; }
+    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .meta { font-family: var(--mono); font-size: 11px; color: var(--ice-mute); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,217,255,.15); }
+    h2 { font-size: 12px; font-weight: 600; color: var(--cyan); margin: 40px 0 12px; text-transform: uppercase; letter-spacing: .08em; font-family: var(--mono); }
+    p { color: var(--ice); margin-bottom: 16px; }
+    ul { margin: 0 0 16px 20px; }
+    ul li { color: var(--ice); margin-bottom: 8px; }
+    .warn-box {
+      border: 1px solid rgba(245,194,107,.4);
+      background: rgba(245,194,107,.06);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #F5C26B;
+      line-height: 1.6;
+    }
+    .footer-note {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,217,255,.15);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ice-mute);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-note a { color: var(--ice-mute); }
+    .footer-note a:hover { color: var(--cyan); }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="topbar">
+  <span>CHRON<span style="color:var(--cyan)">.OS</span> · HYPERION INDUSTRIES</span>
+  <span>
+    <a href="/">Home</a> &nbsp;·&nbsp;
+    <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp;
+    <a href="/contact.html">Contact</a>
+  </span>
+</div>
+<div class="wrap">
+  <h1>Terms of Use</h1>
+  <p class="meta">Effective: May 2026 &nbsp;·&nbsp; CHRON.OS Public Preview &nbsp;·&nbsp; Hyperion Industries</p>
+
+  <div class="warn-box">
+    CHRON.OS is early beta software. It is provided for testing and personal use. It may have bugs, incomplete features, or unexpected behavior. Back up important files before use.
+  </div>
+
+  <h2>What CHRON.OS is</h2>
+  <p>CHRON.OS is a local-first file organization tool in public preview. It is developed by Hyperion Industries and distributed as free software for personal use. This is a beta release — it is incomplete, and things may break.</p>
+
+  <h2>No warranty</h2>
+  <p>CHRON.OS is provided <strong>as-is</strong>, with no guarantees. Hyperion Industries makes no warranty that the software will work correctly, be error-free, or be fit for any particular purpose. You use it at your own risk.</p>
+
+  <h2>Your responsibility</h2>
+  <ul>
+    <li><strong>Back up your files</strong> before using CHRON.OS on any folder you care about. Run it on test data first.</li>
+    <li>CHRON.OS is designed not to modify original files — but no software is perfect, especially in beta. Treat this like any other early-access tool: assume things could go wrong.</li>
+    <li>Windows may show a SmartScreen or Defender warning because the installer may be unsigned or not yet widely distributed. This is a Windows security mechanism. Review the source at the GitHub repo before installing if you are unsure.</li>
+    <li>You are responsible for what you store, organize, and annotate using CHRON.OS.</li>
+  </ul>
+
+  <h2>Personal use</h2>
+  <p>CHRON.OS is free for personal use during the public preview period. If you want to use it in an organizational or commercial context, or need deployment support, contact <a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a>.</p>
+
+  <h2>Open formats</h2>
+  <p>CHRON.OS stores its metadata in open formats (JSON/SQLite) on your local device. You are not locked in. You can inspect, export, or delete this data at any time.</p>
+
+  <h2>No account required</h2>
+  <p>The local build requires no account, login, or internet connection. Optional cloud integrations, if and when added, will be explicitly opt-in.</p>
+
+  <h2>Limitation of liability</h2>
+  <p>To the maximum extent allowed by applicable law, Hyperion Industries is not liable for any damages — direct, indirect, incidental, or consequential — arising from your use of CHRON.OS. This includes data loss, system issues, or any other harm.</p>
+
+  <h2>Changes</h2>
+  <p>These terms may be updated as the product matures. The date at the top reflects the most recent revision. Continued use after changes means you accept the updated terms.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a></p>
+
+  <div class="footer-note">
+    <span>CHRON<span style="color:var(--cyan)">.OS</span> · <a href="https://hyperion-industries.dev">hyperion-industries.dev</a></span>
+    <span><a href="/">Home</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a></span>
+  </div>
+</div>
+</body>
+</html>
