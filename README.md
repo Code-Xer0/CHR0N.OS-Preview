@@ -6,12 +6,20 @@ This repository is the public download and portfolio surface. It intentionally d
 
 ## Download
 
-Download the current Windows preview from the `downloads/` folder or from the GitHub Releases page once published. The setup installer is the recommended path for users who do not already have development tooling installed.
+Download the current Windows preview from the `downloads/` folder or from the GitHub Releases page once published.
+
+Recommended for most Windows users:
 
 - `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe`
 - `downloads/CHRON.OS-v0.1.0-beta.1-windows-setup.exe.sha256.txt`
+
+Optional package/installer artifact:
+
 - `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi`
 - `downloads/CHRON.OS-v0.1.0-beta.1-windows.msi.sha256.txt`
+
+Portable/no-install option for users who already have the required runtime pieces or want no-install testing:
+
 - `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip`
 - `downloads/CHRON.OS-v0.1.0-beta.1-portable-windows.zip.sha256.txt`
 
@@ -30,4 +38,4 @@ Known areas still in progress:
 
 ## Source Access
 
-The public preview is distributed as a portable build. Source access, internal doctrine, and active development work remain separate from this public distribution lane.
+The public preview is distributed as an installer-first beta, with a portable ZIP available for no-install testing. Source access, internal doctrine, and active development work remain separate from this public distribution lane.
