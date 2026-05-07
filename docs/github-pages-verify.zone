@@ -1,0 +1,7 @@
+; GitHub Pages domain verification TXT record
+; Import this in Cloudflare → DNS → Records → Import and Export
+; Leave "Proxy imported DNS records" UNCHECKED
+
+$ORIGIN hyperion-industries.dev.
+
+_github-pages-challenge-Code-Xer0  300  IN  TXT  "bcd2a78190aad1e952bb8cbead3219"
