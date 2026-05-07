@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — CHRON.OS</title>
+  <style>
+    :root {
+      --ink: #04081a;
+      --cyan: #00D9FF;
+      --ice: #E6F0F7;
+      --ice-mute: rgba(230,240,247,.45);
+      --mono: 'JetBrains Mono', 'Fira Mono', monospace;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--ink);
+      color: var(--ice);
+      font-family: var(--sans);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .code {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 em { color: var(--cyan); font-style: normal; }
+    p {
+      color: var(--ice-mute);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 42ch;
+      margin-bottom: 40px;
+    }
+    .actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(0,217,255,.3);
+      border-radius: 3px;
+      padding: 12px 24px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ice);
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-primary {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .btn-primary:hover { opacity: .9; color: var(--ink); }
+    .sig {
+      position: fixed;
+      bottom: 24px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .18em;
+      color: var(--ice-mute);
+      text-transform: uppercase;
+    }
+    .sig em { color: var(--cyan); font-style: normal; }
+
+    /* Orbital decoration */
+    .orbit {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: .06;
+    }
+    .orbit circle { fill: none; stroke: var(--cyan); }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <svg class="orbit" width="600" height="600" viewBox="0 0 600 600">
+    <circle cx="300" cy="300" r="80" stroke-width="1"/>
+    <circle cx="300" cy="300" r="160" stroke-width="0.5"/>
+    <circle cx="300" cy="300" r="260" stroke-width="0.5"/>
+  </svg>
+
+  <div class="code">404 · artifact not found</div>
+  <h1>This path isn't<br>in the <em>archive.</em></h1>
+  <p>The page you're looking for doesn't exist or may have moved. Head back to the main site.</p>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="/">Back to CHRON.OS</a>
+    <a class="btn" href="/contact.html">Report a broken link</a>
+  </div>
+
+  <div class="sig">CHRON<em>.OS</em> · chr0nos.app</div>
+
+</body>
+</html>

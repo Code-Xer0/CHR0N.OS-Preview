@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#04081a"/>
+
+  <!-- Subtle orbital rings -->
+  <circle cx="980" cy="315" r="200" fill="none" stroke="#00D9FF" stroke-width="0.8" opacity="0.12"/>
+  <circle cx="980" cy="315" r="320" fill="none" stroke="#00D9FF" stroke-width="0.5" opacity="0.07"/>
+  <circle cx="980" cy="315" r="440" fill="none" stroke="#00D9FF" stroke-width="0.4" opacity="0.05"/>
+
+  <!-- Cyan accent line -->
+  <line x1="80" y1="200" x2="80" y2="430" stroke="#00D9FF" stroke-width="2" opacity="0.6"/>
+
+  <!-- Eyebrow -->
+  <text x="104" y="215" font-family="'JetBrains Mono', monospace" font-size="14" fill="#00D9FF" letter-spacing="3" opacity="0.9">LOCAL-FIRST ARCHIVAL INTELLIGENCE</text>
+
+  <!-- Main wordmark -->
+  <text x="100" y="310" font-family="'Space Grotesk', system-ui, sans-serif" font-size="96" font-weight="700" fill="#ffffff" letter-spacing="-2">CHRON</text>
+  <text x="622" y="310" font-family="'JetBrains Mono', monospace" font-size="96" font-weight="400" fill="#00D9FF">.OS</text>
+
+  <!-- Tagline -->
+  <text x="104" y="370" font-family="'Space Grotesk', system-ui, sans-serif" font-size="24" fill="rgba(230,240,247,0.65)" letter-spacing="0.3">Organize, preserve, and navigate your files — without losing context.</text>
+
+  <!-- Bottom meta -->
+  <text x="104" y="520" font-family="'JetBrains Mono', monospace" font-size="13" fill="rgba(230,240,247,0.3)" letter-spacing="2">chr0nos.app</text>
+
+  <!-- Node dots -->
+  <circle cx="980" cy="315" r="4" fill="#00D9FF" opacity="0.8"/>
+  <circle cx="980" cy="175" r="2.5" fill="#00D9FF" opacity="0.5"/>
+  <circle cx="1100" cy="280" r="2" fill="#00D9FF" opacity="0.4"/>
+  <circle cx="860" cy="390" r="2" fill="#00D9FF" opacity="0.4"/>
+  <circle cx="1050" cy="430" r="1.5" fill="#00D9FF" opacity="0.3"/>
+
+  <!-- Node lines -->
+  <line x1="980" y1="315" x2="980" y2="175" stroke="#00D9FF" stroke-width="0.6" opacity="0.25"/>
+  <line x1="980" y1="315" x2="1100" y2="280" stroke="#00D9FF" stroke-width="0.6" opacity="0.2"/>
+  <line x1="980" y1="315" x2="860" y2="390" stroke="#00D9FF" stroke-width="0.6" opacity="0.2"/>
+  <line x1="980" y1="315" x2="1050" y2="430" stroke="#00D9FF" stroke-width="0.6" opacity="0.15"/>
+
+  <!-- Hyperion attribution -->
+  <text x="104" y="560" font-family="'JetBrains Mono', monospace" font-size="12" fill="rgba(230,240,247,0.2)" letter-spacing="2">A HYPERION INDUSTRIES SYSTEM</text>
+</svg>

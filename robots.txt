@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /docs/
+
+Sitemap: https://chr0nos.app/sitemap.xml
