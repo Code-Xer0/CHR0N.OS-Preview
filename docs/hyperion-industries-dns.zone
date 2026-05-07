@@ -1,0 +1,23 @@
+; Cloudflare DNS import — hyperion-industries.dev
+; GitHub Pages + subdomain stubs
+; Generated for: CHRON.OS Preview · Hyperion Industries
+;
+; IMPORT INSTRUCTIONS:
+;   Cloudflare → DNS → Records → Import and Export → Select a file → choose this file
+;   Leave "Proxy imported DNS records" UNCHECKED (GitHub Pages needs DNS-only for cert check)
+;   After GitHub Pages HTTPS is confirmed, you can proxy the A records if desired.
+
+$ORIGIN hyperion-industries.dev.
+
+; ----- GitHub Pages apex A records -----
+@   300  IN  A  185.199.108.153
+@   300  IN  A  185.199.109.153
+@   300  IN  A  185.199.110.153
+@   300  IN  A  185.199.111.153
+
+; ----- www → GitHub Pages -----
+www  300  IN  CNAME  code-xer0.github.io.
+
+; ----- Future product subdomains (staged, DNS-only) -----
+chronos  300  IN  CNAME  code-xer0.github.io.
+mnem     300  IN  CNAME  code-xer0.github.io.
