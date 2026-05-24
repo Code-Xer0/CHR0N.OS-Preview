@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vite/
+*.log
+npm-debug.log*
+
+# One-off local conversion/editor scripts.
+add_editor.cjs
+copy_script.cjs
+extract_images.cjs
+fix_comments.cjs
+fix_styles.cjs
+generate_other_pages.cjs
+generate_react.cjs

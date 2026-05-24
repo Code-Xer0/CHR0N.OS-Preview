@@ -1,112 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — CHRON.OS · Hyperion Industries</title>
-  <style>
-    :root {
-      --ink: #04081a;
-      --cyan: #00D9FF;
-      --ice: #E6F0F7;
-      --ice-mute: rgba(230,240,247,.55);
-      --mono: 'JetBrains Mono', 'Fira Mono', monospace;
-      --sans: 'Space Grotesk', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--ink); color: var(--ice); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
-    a { color: var(--cyan); text-underline-offset: 3px; }
-    a:hover { opacity: .8; }
-    .topbar {
-      background: rgba(4,8,26,.92);
-      border-bottom: 1px solid rgba(0,217,255,.12);
-      padding: 8px 24px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ice-mute);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .topbar a { color: var(--ice-mute); text-decoration: none; }
-    .topbar a:hover { color: var(--cyan); }
-    .wrap { max-width: 780px; margin: 0 auto; padding: 64px 24px; }
-    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .meta { font-family: var(--mono); font-size: 11px; color: var(--ice-mute); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,217,255,.15); }
-    h2 { font-size: 12px; font-weight: 600; color: var(--cyan); margin: 40px 0 12px; text-transform: uppercase; letter-spacing: .08em; font-family: var(--mono); }
-    p { color: var(--ice); margin-bottom: 16px; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 32px 0; }
-    .contact-card { border: 1px solid rgba(0,217,255,.18); background: rgba(0,217,255,.04); border-radius: 4px; padding: 24px; }
-    .contact-card .label { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
-    .contact-card .addr { font-size: 15px; font-weight: 600; color: #fff; }
-    .contact-card .addr a { color: #fff; text-decoration: none; }
-    .contact-card .addr a:hover { color: var(--cyan); }
-    .contact-card .desc { margin-top: 8px; font-size: 13px; color: var(--ice-mute); line-height: 1.5; }
-    .gh-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid rgba(0,217,255,.25); border-radius: 4px;
-      padding: 14px 20px; text-decoration: none; color: var(--ice);
-      font-size: 14px; transition: border-color .2s, color .2s; margin-top: 8px;
-    }
-    .gh-link:hover { border-color: var(--cyan); color: var(--cyan); }
-    .footer-note {
-      margin-top: 64px; padding-top: 24px;
-      border-top: 1px solid rgba(0,217,255,.15);
-      font-family: var(--mono); font-size: 11px; color: var(--ice-mute);
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    }
-    .footer-note a { color: var(--ice-mute); }
-    .footer-note a:hover { color: var(--cyan); }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-<div class="topbar">
-  <span>CHRON<span style="color:var(--cyan)">.OS</span> · HYPERION INDUSTRIES</span>
-  <span>
-    <a href="/">Home</a> &nbsp;·&nbsp;
-    <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp;
-    <a href="/terms.html">Terms</a>
-  </span>
-</div>
-<div class="wrap">
-  <h1>Contact</h1>
-  <p class="meta">Hyperion Industries · Public Preview · May 2026</p>
-
-  <p>CHRON.OS is an indie project in early beta. Response times may vary, but we read everything.</p>
-
-  <h2>Email</h2>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="label">General</div>
-      <div class="addr"><a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a></div>
-      <div class="desc">Questions, feedback, anything else. This is the main line.</div>
-    </div>
-    <div class="contact-card">
-      <div class="label">Support</div>
-      <div class="addr"><a href="mailto:support@hyperion-industries.dev">support@hyperion-industries.dev</a></div>
-      <div class="desc">Bug reports, install issues, unexpected behavior. Include your Windows version and what happened.</div>
-    </div>
-  </div>
-
-  <h2>GitHub</h2>
-  <p>Bug reports, feature requests, and release notes live in the public preview repository.</p>
-  <a class="gh-link" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-    Code-Xer0/CHR0N.OS-Preview
-  </a>
-
-  <h2>Response expectations</h2>
-  <p>This is a solo / small-team project in active development. We aim to respond within a few days. For bugs, the more detail you include (OS version, what you did, what happened, any error messages), the faster we can help.</p>
-
-  <div class="footer-note">
-    <span>CHRON<span style="color:var(--cyan)">.OS</span> · <a href="https://hyperion-industries.dev">hyperion-industries.dev</a></span>
-    <span><a href="/">Home</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span>
-  </div>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning."
+    />
+    <title>CHRON.OS - Local-first archival intelligence</title>
+    <link rel="icon" href="./assets/chronos-icon-Dwnr00as-Dwnr00as.png" />
+    <script type="module" crossorigin src="./assets/index-CfA1Y-rm.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D2qHjkie.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

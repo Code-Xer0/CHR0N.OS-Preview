@@ -1,113 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy — CHRON.OS · Hyperion Industries</title>
-  <style>
-    :root {
-      --ink: #04081a;
-      --cyan: #00D9FF;
-      --ice: #E6F0F7;
-      --ice-mute: rgba(230,240,247,.55);
-      --mono: 'JetBrains Mono', 'Fira Mono', monospace;
-      --sans: 'Space Grotesk', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--ink); color: var(--ice); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
-    a { color: var(--cyan); text-underline-offset: 3px; }
-    a:hover { opacity: .8; }
-    .topbar {
-      background: rgba(4,8,26,.92);
-      border-bottom: 1px solid rgba(0,217,255,.12);
-      padding: 8px 24px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ice-mute);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .topbar a { color: var(--ice-mute); text-decoration: none; }
-    .topbar a:hover { color: var(--cyan); }
-    .wrap { max-width: 780px; margin: 0 auto; padding: 64px 24px; }
-    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .meta { font-family: var(--mono); font-size: 11px; color: var(--ice-mute); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,217,255,.15); }
-    h2 { font-size: 12px; font-weight: 600; color: var(--cyan); margin: 40px 0 12px; text-transform: uppercase; letter-spacing: .08em; font-family: var(--mono); }
-    p { color: var(--ice); margin-bottom: 16px; }
-    ul { margin: 0 0 16px 20px; }
-    ul li { color: var(--ice); margin-bottom: 8px; }
-    .footer-note {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0,217,255,.15);
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ice-mute);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .footer-note a { color: var(--ice-mute); }
-    .footer-note a:hover { color: var(--cyan); }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-<div class="topbar">
-  <span>CHRON<span style="color:var(--cyan)">.OS</span> · HYPERION INDUSTRIES</span>
-  <span>
-    <a href="/">Home</a> &nbsp;·&nbsp;
-    <a href="/terms.html">Terms</a> &nbsp;·&nbsp;
-    <a href="/contact.html">Contact</a>
-  </span>
-</div>
-<div class="wrap">
-  <h1>Privacy</h1>
-  <p class="meta">Effective: May 2026 &nbsp;·&nbsp; CHRON.OS Public Preview &nbsp;·&nbsp; Hyperion Industries</p>
-
-  <h2>What this page is</h2>
-  <p>This page covers the public preview site at <strong>hyperion-industries.dev</strong> and the CHRON.OS Windows preview build. It is written in plain language. If anything is unclear, email <a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a>.</p>
-
-  <h2>The public preview site</h2>
-  <p>The CHRON.OS preview site is a public download and information page, hosted on GitHub Pages and served through Cloudflare. Standard web server logs (IP address, browser type, page requested) may be recorded by GitHub and Cloudflare under their own privacy policies. Hyperion Industries does not operate its own server-side analytics or tracking on this site.</p>
-
-  <h2>The local Windows app</h2>
-  <p>CHRON.OS is designed as a <strong>local-first</strong> file organization tool. That means:</p>
-  <ul>
-    <li>Your files stay on your device. The app does not upload your files or file contents to any remote server.</li>
-    <li>Original files are not intentionally modified. CHRON.OS works with copies and metadata stored in a local database on your machine.</li>
-    <li>No account is required to use the local build. No email, no login, no cloud account.</li>
-    <li>Metadata, tags, and annotations you create are stored locally on your device in an open format.</li>
-  </ul>
-
-  <h2>Third-party services (optional)</h2>
-  <p>Future versions of CHRON.OS may include optional integrations with cloud storage providers (e.g. Google Drive, OneDrive). These would be explicitly opt-in. Do not connect external services unless you have reviewed and accepted the terms of those providers. At the time of this writing, no third-party cloud integrations are active in the public preview.</p>
-
-  <h2>Windows Defender / SmartScreen</h2>
-  <p>Because CHRON.OS preview builds may be unsigned or not yet widely distributed, Windows may show a SmartScreen warning. This is a Windows security feature, not evidence that the software is harmful. You can view the source and release history at <a href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">github.com/Code-Xer0/CHR0N.OS-Preview</a>.</p>
-
-  <h2>Data you send us</h2>
-  <p>If you email us at <a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a>, we receive the contents of that email. We will use it only to respond to you. We do not share it with third parties.</p>
-
-  <h2>Children</h2>
-  <p>CHRON.OS is not directed at children under 13. We do not knowingly collect data from children.</p>
-
-  <h2>Changes to this policy</h2>
-  <p>This is an early beta product. This privacy notice may be updated as the product evolves. The effective date at the top will reflect the most recent revision.</p>
-
-  <h2>Contact</h2>
-  <p>Questions, concerns, or requests: <a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a></p>
-
-  <div class="footer-note">
-    <span>CHRON<span style="color:var(--cyan)">.OS</span> · <a href="https://hyperion-industries.dev">hyperion-industries.dev</a></span>
-    <span><a href="/">Home</a> · <a href="/terms.html">Terms</a> · <a href="/contact.html">Contact</a></span>
-  </div>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning."
+    />
+    <title>CHRON.OS - Local-first archival intelligence</title>
+    <link rel="icon" href="./assets/chronos-icon-Dwnr00as-Dwnr00as.png" />
+    <script type="module" crossorigin src="./assets/index-CfA1Y-rm.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D2qHjkie.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
