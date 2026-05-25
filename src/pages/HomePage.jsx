@@ -187,7 +187,7 @@ export default function HomePage() {
     </nav>
     <div className="nav-cta">
       <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">View on GitHub</a>
-      <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download installer</a>
+      <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download installer</a>
     </div>
   </div>
 </header>
@@ -210,8 +210,8 @@ export default function HomePage() {
         <span className="pill">Built for high-context work</span>
       </div>
       <div className="cta-row">
-        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
+        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
+        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
         <a className="btn" href="#doctrine">Read the principles</a>
       </div>
       <div className="trust">Public beta · Installer recommended · <span>Portable ZIP available for no-install use</span></div>
@@ -679,8 +679,8 @@ export default function HomePage() {
       <h3>Start building an archive <em>you can actually navigate.</em></h3>
       <p>Point CHRON.OS at a folder and let it begin organizing your documents, media, research, and projects into a connected archive you can explore and search over time.</p>
       <div className="cta-row">
-        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
+        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
+        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
         <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">View on GitHub</a>
       </div>
       <p className="trust">Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.</p>
@@ -767,8 +767,8 @@ export default function HomePage() {
       <div className="foot-col">
         <h6>Distribution</h6>
         <ul>
-          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-windows-setup.exe" target="_blank" rel="noopener">Windows installer</a></li>
-          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.0-beta.1/CHRON.OS-v0.2.0-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a></li>
+          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Windows installer</a></li>
+          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a></li>
           <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="#system">Use Cases</a></li>
           <li><a href="CHANGELOG.md" target="_blank" rel="noopener">What's new</a></li>
@@ -793,3 +793,4 @@ export default function HomePage() {
     </>
   );
 }
+

@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.2.1-beta.1 - 2026-05-25
+
+Public Windows beta refresh built from the current stable mainline core.
+
+Includes:
+
+- stable-core recovery and archived-library reset fixes from the May 25 mainline
+- app UI version/channel updated to v0.2.1-beta.1 / Beta channel
+- fresh Windows setup EXE, MSI, portable ZIP, and SHA-256 checksum files
+- public preview site download links updated to the v0.2.1-beta.1 GitHub release
+
+Known limitations:
+
+- public beta; use test/non-critical data first
+- Windows may warn on unsigned beta builds
+- MSI/internal product version is 0.2.1 while the public release tag and UI are v0.2.1-beta.1
+- OAuth production verification, NAS polish, updater, full media inference, and WebGL Atlas optimization remain in progress
+
 ## v0.2.0-beta.1 - 2026-05-07
 
 Second public Windows beta focused on release readiness and installability.
