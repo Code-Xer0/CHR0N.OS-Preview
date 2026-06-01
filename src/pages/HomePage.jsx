@@ -37,6 +37,15 @@ export default function HomePage() {
     const ctx = c.getContext('2d');
     let stars = [];
 
+    function themeColors() {
+      const source = document.querySelector('.theme-shell') || document.documentElement;
+      const styles = window.getComputedStyle(source);
+      return {
+        accent: styles.getPropertyValue('--cyan').trim() || '#00D9FF',
+        star: styles.getPropertyValue('--ice').trim() || '#E6F0F7',
+      };
+    }
+
     function resize() {
       c.width = window.innerWidth * window.devicePixelRatio;
       c.height = window.innerHeight * window.devicePixelRatio;
@@ -44,6 +53,7 @@ export default function HomePage() {
       c.style.height = window.innerHeight + 'px';
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
       stars = [];
+      const colors = themeColors();
       const count = Math.floor((window.innerWidth * window.innerHeight) / 9000);
       for (let i = 0; i < count; i++) {
         stars.push({
@@ -53,7 +63,7 @@ export default function HomePage() {
           a: Math.random() * 0.6 + 0.15,
           tw: Math.random() * 0.02 + 0.005,
           p: Math.random() * Math.PI * 2,
-          c: Math.random() > 0.85 ? '#00D9FF' : '#E6F0F7',
+          c: Math.random() > 0.85 ? colors.accent : colors.star,
         });
       }
     }
@@ -73,6 +83,10 @@ export default function HomePage() {
     }
 
     window.addEventListener('resize', resize);
+    const shell = document.querySelector('.theme-shell');
+    if (shell) {
+      new MutationObserver(resize).observe(shell, { attributes: true, attributeFilter: ['class'] });
+    }
     resize();
     requestAnimationFrame(draw);
   })();
@@ -294,13 +308,21 @@ export default function HomePage() {
      01 — SYSTEM OVERVIEW
      ============================================================ */}
 <section id="system">
-  <div className="section-head">
-    <span className="eyebrow">01 — System overview</span>
-    <h2>Most folders become digital junk drawers over time. <em>CHRON.OS helps turn that around.</em></h2>
+  <div className="section-lead">
+    <div className="section-head">
+      <span className="eyebrow">01 — System overview</span>
+      <h2>Most folders become digital junk drawers over time. <em>CHRON.OS helps turn that around.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>Most folders become unnavigable over time — files pile up, context disappears, and finding something from three years ago means hoping you remember what you named it. CHRON.OS turns scattered files into a searchable, connected archive. It keeps track of documents, media, timelines, duplicates, relationships, and project history so important things don't disappear into chaos.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Documents</span>
+        <span>Media</span>
+        <span>Timelines</span>
+        <span>Relationships</span>
+      </div>
+    </div>
   </div>
-  <p style={{ maxWidth: '78ch', color: 'var(--ice-mute)', fontSize: '16px', lineHeight: 1.7, margin: '-24px 0 48px' }}>
-    Most folders become unnavigable over time — files pile up, context disappears, and finding something from three years ago means hoping you remember what you named it. CHRON.OS turns scattered files into a searchable, connected archive. It keeps track of documents, media, timelines, duplicates, relationships, and project history so important things don't disappear into chaos.
-  </p>
 
   <div className="pillars">
     <div className="pillar">
@@ -344,14 +366,21 @@ export default function HomePage() {
 {/* ============================================================
      02 — WHAT IT PRESERVES (provenance chain)
      ============================================================ */}
-<section id="preserves" style={{ paddingTop: '48px' }}>
-  <div className="section-head">
-    <span className="eyebrow">02 — What it preserves</span>
-    <h2>Source → hash → metadata → meaning → trace.</h2>
+<section id="preserves" className="section-tight">
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">02 — What it preserves</span>
+      <h2>Source → hash → metadata → meaning → trace.</h2>
+    </div>
+    <div className="section-copy-card">
+      <p>CHRON.OS keeps more than the file itself. It preserves the trail around it — where it came from, when it changed, and how it connects to the rest of your archive.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Source custody</span>
+        <span>Sidecars</span>
+        <span>Continuity</span>
+      </div>
+    </div>
   </div>
-  <p style={{ maxWidth: '70ch', color: 'var(--ice-mute)', fontSize: '15px', lineHeight: 1.7, margin: '-24px 0 40px' }}>
-    CHRON.OS keeps more than the file itself. It preserves the trail around it — where it came from, when it changed, and how it connects to the rest of your archive.
-  </p>
 
   <div className="chain">
     <div className="chain-step">
@@ -412,13 +441,21 @@ export default function HomePage() {
      04 — PRODUCT GALLERY (See it operate)
      ============================================================ */}
 <section id="atlas">
-  <div className="section-head">
-    <span className="eyebrow">04 — See it operate</span>
-    <h2>See how the archive <em>works in practice.</em></h2>
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">04 — See it operate</span>
+      <h2>See how the archive <em>works in practice.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>These are real screens from the live beta. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Atlas</span>
+        <span>Constellation</span>
+        <span>Trace</span>
+        <span>Files</span>
+      </div>
+    </div>
   </div>
-  <p style={{ maxWidth: '72ch', color: 'var(--ice-mute)', fontSize: '15px', lineHeight: 1.7, margin: '-24px 0 40px' }}>
-    These are real screens from the live beta. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time.
-  </p>
 
     <div className="gallery" id="gallery">
       <div className="gallery-head">
@@ -558,13 +595,20 @@ export default function HomePage() {
      07 — LOCAL-FIRST CUSTODY (Privacy)
      ============================================================ */}
 <section id="privacy">
-  <div className="section-head">
-    <span className="eyebrow">07 — Your files stay with you</span>
-    <h2>Your computer stays in control. <em>Not a cloud account.</em></h2>
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">07 — Your files stay with you</span>
+      <h2>Your computer stays in control. <em>Not a cloud account.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>CHRON.OS is designed so your archive starts with you — not a cloud account. Your original files stay untouched on your machine unless you choose otherwise. Cloud tools and external services are optional add-ons, not requirements.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Local-first</span>
+        <span>Opt-in cloud</span>
+        <span>Originals untouched</span>
+      </div>
+    </div>
   </div>
-  <p style={{ maxWidth: '74ch', color: 'var(--ice-mute)', fontSize: '15px', lineHeight: 1.7, margin: '-24px 0 40px' }}>
-    CHRON.OS is designed so your archive starts with you — not a cloud account. Your original files stay untouched on your machine unless you choose otherwise. Cloud tools and external services are optional add-ons, not requirements.
-  </p>
 
   <div className="privacy">
     <div className="trust-list">
@@ -652,15 +696,21 @@ export default function HomePage() {
      08 — BETA STATUS
      ============================================================ */}
 <section id="beta">
-  <div className="section-head">
-    <span className="eyebrow">08 — Beta status</span>
-    <h2>Core features are live <em>and improving quickly.</em></h2>
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">08 — Beta status</span>
+      <h2>Core features are live <em>and improving quickly.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>The core archive, file preview, duplicate detection, timeline navigation, dashboard, and relationship views are all working. The instrument works. The archive grows.</p>
+      <p>Advanced media understanding, external cloud tools, and deeper Atlas performance are under active development.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>v0.9.4</span>
+        <span>Stable channel</span>
+        <span>Gated providers</span>
+      </div>
+    </div>
   </div>
-  <p style={{ maxWidth: '74ch', color: 'var(--ice-mute)', fontSize: '15px', lineHeight: 1.7, margin: '-24px 0 0' }}>
-    The core archive, file preview, duplicate detection, timeline navigation, dashboard, and relationship views are all working. The instrument works. The archive grows.
-
-  Advanced media understanding, external cloud tools, and deeper Atlas performance are under active development.
-  </p>
 
   <div className="status-grid">
     <div className="stat-card">
