@@ -1,10 +1,334 @@
 {
+  "releaseLinks": {
+    "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe",
+    "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip",
+    "github": "https://github.com/Code-Xer0/CHR0N.OS-Preview"
+  },
   "home": {
     "hero": {
       "eyebrow": "Local-first archival intelligence",
-      "titlePart1": "Your archive should remember",
-      "titlePart2": "why things matter.",
-      "lede": "CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning — without making the cloud the source of truth."
+      "titlePrefix": "Your archive should remember",
+      "titleEmphasis": "why things matter.",
+      "lede": "CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning — without making the cloud the source of truth.",
+      "primaryCta": "Download Windows installer",
+      "portableCta": "Portable ZIP",
+      "doctrineCta": "Read the principles"
+    },
+    "pills": [
+      "Runs locally",
+      "Preserves provenance",
+      "Maps meaning over time",
+      "Built for high-context work"
+    ],
+    "assurance": [
+      "Public beta",
+      "Installer recommended",
+      "Portable no-install path"
+    ],
+    "console": {
+      "releaseKicker": "public beta",
+      "releaseTitle": "Windows installer ready",
+      "releaseBody": "Portable ZIP remains available for no-install testing.",
+      "graphMeta": [
+        "549 artifacts",
+        "120 edges"
+      ]
+    },
+    "pipeline": [
+      {
+        "label": "Source",
+        "description": "Original path and intake context remain visible."
+      },
+      {
+        "label": "Hash",
+        "description": "Every artifact gets a cryptographic anchor."
+      },
+      {
+        "label": "Metadata",
+        "description": "Sidecar facts stay local and inspectable."
+      },
+      {
+        "label": "Meaning",
+        "description": "User-weighted context can evolve over time."
+      },
+      {
+        "label": "Trace",
+        "description": "Relationships remain walkable across projects."
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Archive",
+        "copy": "Preserve originals, metadata, hashes, and paths."
+      },
+      {
+        "title": "Understand",
+        "copy": "Classify by domain, form, role, and salience."
+      },
+      {
+        "title": "Navigate",
+        "copy": "Move by timeline, ontology, duplicate, or relation."
+      },
+      {
+        "title": "Remember",
+        "copy": "Keep continuity across long-running work."
+      }
+    ],
+    "gallery": [
+      {
+        "tab": "Semantic Atlas",
+        "asset": "extracted_5.png",
+        "alt": "Semantic Atlas — domain field with clusters, inheritance lines, and seven active semantic domains",
+        "panels": [
+          {
+            "label": "Surface relationships",
+            "copy": "Clusters show where artifacts collide. Strings show inheritance, recurrence, semantic echo."
+          },
+          {
+            "label": "Mode tabs",
+            "copy": "Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field."
+          },
+          {
+            "label": "7 active domains",
+            "copy": "application/pdf · image/png · image/jpeg · text/plain · visual media · civil litigation · housing law."
+          }
+        ]
+      },
+      {
+        "tab": "Constellation",
+        "asset": "extracted_6.png",
+        "alt": "Knowledge Constellation — orbital lanes around a User Knowledge Well",
+        "panels": [
+          {
+            "label": "Living constellation",
+            "copy": "Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well."
+          },
+          {
+            "label": "549 nodes · 120 edges",
+            "copy": "205 domains across the live archive. Drag to pan, click a domain to isolate."
+          },
+          {
+            "label": "User Knowledge Well",
+            "copy": "The gravitational center. Significance accumulates here over time."
+          }
+        ]
+      },
+      {
+        "tab": "Artifact Detail",
+        "asset": "extracted_7.png",
+        "alt": "Artifact detail — meaning panel with significance, role, horizon, emotional valence",
+        "panels": [
+          {
+            "label": "Meaning panel",
+            "copy": "Significance, score, role, horizon, emotional valence — all attached to the artifact."
+          },
+          {
+            "label": "User-confirmed outranks model",
+            "copy": "Local user-weighted context wins over inferred meaning."
+          },
+          {
+            "label": "Tags & concepts",
+            "copy": "document, applied, research paper, specification. Editable, traceable."
+          }
+        ]
+      },
+      {
+        "tab": "Trace Relations",
+        "asset": "extracted_8.png",
+        "alt": "Trace relations — follow lineage between source documents and derivatives",
+        "panels": [
+          {
+            "label": "Trace relations",
+            "copy": "Every related artifact, every shared domain, every chain of inheritance — kept and walkable."
+          },
+          {
+            "label": "Cross-form trails",
+            "copy": "Whitepapers, analyses, constitutions, landing pages — all on the same field."
+          },
+          {
+            "label": "No data is orphaned",
+            "copy": "If it entered the archive, the path back is preserved."
+          }
+        ]
+      },
+      {
+        "tab": "Archivist",
+        "asset": "extracted_9.png",
+        "alt": "Archivist — chat surface ready with archive context",
+        "panels": [
+          {
+            "label": "Ready with context",
+            "copy": "Ask Archivist to find files, explain structure, create folders, or review the ontology."
+          },
+          {
+            "label": "Local history",
+            "copy": "Pane and bubble share the same local history. Stays on this device unless context is required."
+          },
+          {
+            "label": "Operational",
+            "copy": "archivist-system / v1.8.0 · 549 indexed."
+          }
+        ]
+      },
+      {
+        "tab": "Dashboard",
+        "asset": "extracted_10.png",
+        "alt": "Dashboard — domains, document forms, significance, temporal activity",
+        "panels": [
+          {
+            "label": "Domains, forms, significance",
+            "copy": "Live counts. Whitepaper, note, specification, report, research paper."
+          },
+          {
+            "label": "Temporal activity",
+            "copy": "Ledger anchors by age window — 7d · 30d · 90d · older."
+          },
+          {
+            "label": "Recent / high salience",
+            "copy": "What just landed and what carries weight, surfaced together."
+          }
+        ]
+      },
+      {
+        "tab": "Files",
+        "asset": "extracted_11.png",
+        "alt": "Local source browser — preview originals without mutating them",
+        "panels": [
+          {
+            "label": "Local source browser",
+            "copy": "Inspect file weight; copy selected sources into CHRON.OS without changing the original."
+          },
+          {
+            "label": "Originals untouched",
+            "copy": "Working copies only. Source paths and timestamps preserved."
+          },
+          {
+            "label": "Quick places",
+            "copy": "Home · Downloads · Documents · Current root. Pin any drive."
+          }
+        ]
+      }
+    ],
+    "release": {
+      "recommendation": "Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.",
+      "matrix": [
+        {
+          "term": "Windows · 10/11 · x64",
+          "value": ".exe"
+        },
+        {
+          "term": "Portable Windows bundle",
+          "value": ".zip"
+        },
+        {
+          "term": "Source · release notes",
+          "value": "repo"
+        }
+      ],
+      "installerCta": "Installer",
+      "portableCta": "Portable ZIP",
+      "githubCta": "View on GitHub"
     }
+  },
+  "footer": {
+    "description": "CHRON.OS — local-first archival intelligence. A Hyperion Industries system.",
+    "columns": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "label": "How it works",
+            "href": "#system"
+          },
+          {
+            "label": "The Archivist",
+            "href": "#archivist"
+          },
+          {
+            "label": "See it inside",
+            "href": "#atlas"
+          },
+          {
+            "label": "What it does",
+            "href": "#capabilities"
+          }
+        ]
+      },
+      {
+        "title": "Trust",
+        "links": [
+          {
+            "label": "On-device",
+            "href": "#privacy"
+          },
+          {
+            "label": "Never moves files",
+            "href": "#privacy"
+          },
+          {
+            "label": "Beta status",
+            "href": "#beta"
+          },
+          {
+            "label": "Privacy notes",
+            "href": "#privacy"
+          }
+        ]
+      },
+      {
+        "title": "Distribution",
+        "links": [
+          {
+            "label": "Windows installer",
+            "href": "installer",
+            "external": true
+          },
+          {
+            "label": "Portable ZIP",
+            "href": "portable",
+            "external": true
+          },
+          {
+            "label": "GitHub",
+            "href": "github",
+            "external": true
+          },
+          {
+            "label": "Use Cases",
+            "href": "#system"
+          },
+          {
+            "label": "What's new",
+            "href": "CHANGELOG.md",
+            "external": true
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Privacy",
+            "href": "privacy.html"
+          },
+          {
+            "label": "Terms of Use",
+            "href": "terms.html"
+          },
+          {
+            "label": "Contact",
+            "href": "contact.html"
+          },
+          {
+            "label": "hello@hyperion-industries.dev",
+            "href": "mailto:hello@hyperion-industries.dev"
+          }
+        ]
+      }
+    ],
+    "bottomBrand": "CHRON.OS",
+    "bottomPartner": "HYPERION INDUSTRIES",
+    "bottomPartnerHref": "https://hyperion-industries.dev",
+    "status": "© 2026 · LOCAL-FIRST · BETA"
   }
 }

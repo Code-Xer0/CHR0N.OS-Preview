@@ -2,105 +2,15 @@
 import { useEffect, useState } from 'react';
 import '../index.css';
 import { useTheme } from '../context/ThemeContext';
+import siteContent from '../data/content.json';
 
 const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
-
-const releaseLinks = {
-  installer: 'https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe',
-  portable: 'https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip',
-  github: 'https://github.com/Code-Xer0/CHR0N.OS-Preview',
-};
+const { releaseLinks, home, footer } = siteContent;
 
 const chronLogo = asset('chronos-logo-horizontal.png');
 const chronIcon = asset('chronos-icon.png');
-
-const galleryShots = [
-  {
-    tab: 'Semantic Atlas',
-    src: asset('extracted_5.png'),
-    alt: 'Semantic Atlas — domain field with clusters, inheritance lines, and seven active semantic domains',
-    panels: [
-      ['Surface relationships', 'Clusters show where artifacts collide. Strings show inheritance, recurrence, semantic echo.'],
-      ['Mode tabs', 'Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field.'],
-      ['7 active domains', 'application/pdf · image/png · image/jpeg · text/plain · visual media · civil litigation · housing law.'],
-    ],
-  },
-  {
-    tab: 'Constellation',
-    src: asset('extracted_6.png'),
-    alt: 'Knowledge Constellation — orbital lanes around a User Knowledge Well',
-    panels: [
-      ['Living constellation', 'Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well.'],
-      ['549 nodes · 120 edges', '205 domains across the live archive. Drag to pan, click a domain to isolate.'],
-      ['User Knowledge Well', 'The gravitational center. Significance accumulates here over time.'],
-    ],
-  },
-  {
-    tab: 'Artifact Detail',
-    src: asset('extracted_7.png'),
-    alt: 'Artifact detail — meaning panel with significance, role, horizon, emotional valence',
-    panels: [
-      ['Meaning panel', 'Significance, score, role, horizon, emotional valence — all attached to the artifact.'],
-      ['User-confirmed outranks model', 'Local user-weighted context wins over inferred meaning.'],
-      ['Tags & concepts', 'document, applied, research paper, specification. Editable, traceable.'],
-    ],
-  },
-  {
-    tab: 'Trace Relations',
-    src: asset('extracted_8.png'),
-    alt: 'Trace relations — follow lineage between source documents and derivatives',
-    panels: [
-      ['Trace relations', 'Every related artifact, every shared domain, every chain of inheritance — kept and walkable.'],
-      ['Cross-form trails', 'Whitepapers, analyses, constitutions, landing pages — all on the same field.'],
-      ['No data is orphaned', 'If it entered the archive, the path back is preserved.'],
-    ],
-  },
-  {
-    tab: 'Archivist',
-    src: asset('extracted_9.png'),
-    alt: 'Archivist — chat surface ready with archive context',
-    panels: [
-      ['Ready with context', 'Ask Archivist to find files, explain structure, create folders, or review the ontology.'],
-      ['Local history', 'Pane and bubble share the same local history. Stays on this device unless context is required.'],
-      ['Operational', 'archivist-system / v1.8.0 · 549 indexed.'],
-    ],
-  },
-  {
-    tab: 'Dashboard',
-    src: asset('extracted_10.png'),
-    alt: 'Dashboard — domains, document forms, significance, temporal activity',
-    panels: [
-      ['Domains, forms, significance', 'Live counts. Whitepaper, note, specification, report, research paper.'],
-      ['Temporal activity', 'Ledger anchors by age window — 7d · 30d · 90d · older.'],
-      ['Recent / high salience', 'What just landed and what carries weight, surfaced together.'],
-    ],
-  },
-  {
-    tab: 'Files',
-    src: asset('extracted_11.png'),
-    alt: 'Local source browser — preview originals without mutating them',
-    panels: [
-      ['Local source browser', 'Inspect file weight; copy selected sources into CHRON.OS without changing the original.'],
-      ['Originals untouched', 'Working copies only. Source paths and timestamps preserved.'],
-      ['Quick places', 'Home · Downloads · Documents · Current root. Pin any drive.'],
-    ],
-  },
-];
-
-const heroPipeline = [
-  ['Source', 'Original path and intake context remain visible.'],
-  ['Hash', 'Every artifact gets a cryptographic anchor.'],
-  ['Metadata', 'Sidecar facts stay local and inspectable.'],
-  ['Meaning', 'User-weighted context can evolve over time.'],
-  ['Trace', 'Relationships remain walkable across projects.'],
-];
-
-const heroCapabilities = [
-  ['Archive', 'Preserve originals, metadata, hashes, and paths.'],
-  ['Understand', 'Classify by domain, form, role, and salience.'],
-  ['Navigate', 'Move by timeline, ontology, duplicate, or relation.'],
-  ['Remember', 'Keep continuity across long-running work.'],
-];
+const galleryShots = home.gallery.map((shot) => ({ ...shot, src: asset(shot.asset) }));
+const hrefFor = (href) => releaseLinks[href] || href;
 
 export default function HomePage() {
   const { isLightMode, toggleTheme } = useTheme();
@@ -286,24 +196,19 @@ export default function HomePage() {
 <section className="hero">
   <div className="hero-grid">
     <div className="hero-copy">
-      <span className="eyebrow">Local-first archival intelligence</span>
-      <h1>Your archive should remember <em>why things matter.</em></h1>
-      <p className="lede">CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning — without making the cloud the source of truth.</p>
+      <span className="eyebrow">{home.hero.eyebrow}</span>
+      <h1>{home.hero.titlePrefix} <em>{home.hero.titleEmphasis}</em></h1>
+      <p className="lede">{home.hero.lede}</p>
       <div className="pill-row">
-        <span className="pill">Runs locally</span>
-        <span className="pill">Preserves provenance</span>
-        <span className="pill">Maps meaning over time</span>
-        <span className="pill">Built for high-context work</span>
+        {home.pills.map((pill) => <span className="pill" key={pill}>{pill}</span>)}
       </div>
       <div className="cta-row">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
-        <a className="btn" href="#doctrine">Read the principles</a>
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.hero.primaryCta}</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.hero.portableCta}</a>
+        <a className="btn" href="#doctrine">{home.hero.doctrineCta}</a>
       </div>
       <div className="hero-assurance">
-        <span>Public beta</span>
-        <span>Installer recommended</span>
-        <span>Portable no-install path</span>
+        {home.assurance.map((item) => <span key={item}>{item}</span>)}
       </div>
     </div>
 
@@ -342,9 +247,9 @@ export default function HomePage() {
 
         <div className="console-rail">
           <div className="console-panel release-readout">
-            <div className="panel-kicker">public beta</div>
-            <strong>Windows installer ready</strong>
-            <span>Portable ZIP remains available for no-install testing.</span>
+            <div className="panel-kicker">{home.console.releaseKicker}</div>
+            <strong>{home.console.releaseTitle}</strong>
+            <span>{home.console.releaseBody}</span>
           </div>
           <div className="console-panel graph-readout" aria-hidden="true">
             <svg viewBox="0 0 240 132">
@@ -358,18 +263,17 @@ export default function HomePage() {
               <circle cx="224" cy="62" r="3" />
             </svg>
             <div className="graph-meta">
-              <span>549 artifacts</span>
-              <span>120 edges</span>
+              {home.console.graphMeta.map((item) => <span key={item}>{item}</span>)}
             </div>
           </div>
         </div>
       </div>
       <div className="pipeline-readout">
-        {heroPipeline.map(([label, desc], index) => (
+        {home.pipeline.map(({ label, description }, index) => (
           <div className="pipeline-step" key={label}>
             <span>{String(index + 1).padStart(2, '0')}</span>
             <strong>{label}</strong>
-            <p>{desc}</p>
+            <p>{description}</p>
           </div>
         ))}
       </div>
@@ -377,7 +281,7 @@ export default function HomePage() {
   </div>
 
   <div className="hero-capability-strip">
-    {heroCapabilities.map(([title, copy]) => (
+    {home.capabilities.map(({ title, copy }) => (
       <div className="hero-capability" key={title}>
         <strong>{title}</strong>
         <span>{copy}</span>
@@ -538,10 +442,10 @@ export default function HomePage() {
       ))}
     </div>
     <div className="gallery-foot">
-      {galleryShots[activeShot].panels.map(([label, copy]) => (
-        <div className="gf active" key={label}>
-          <div className="lab">{label}</div>
-          <p>{copy}</p>
+      {galleryShots[activeShot].panels.map((panel) => (
+        <div className="gf active" key={panel.label}>
+          <div className="lab">{panel.label}</div>
+          <p>{panel.copy}</p>
         </div>
       ))}
     </div>
@@ -788,11 +692,11 @@ export default function HomePage() {
       <h3>Start building an archive <em>you can actually navigate.</em></h3>
       <p>Point CHRON.OS at a folder and let it begin organizing your documents, media, research, and projects into a connected archive you can explore and search over time.</p>
       <div className="cta-row">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
-        <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">View on GitHub</a>
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.hero.primaryCta}</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.hero.portableCta}</a>
+        <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">{home.release.githubCta}</a>
       </div>
-      <p className="trust">Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.</p>
+      <p className="trust">{home.release.recommendation}</p>
     </div>
     <div className="release-panel">
       <div className="ontology release-matrix">
@@ -800,22 +704,16 @@ export default function HomePage() {
           <span>Install · footprint</span>
           <span className="live-dot">WINDOWS</span>
         </div>
-        <div className="row release-row">
-          <div className="term">Windows · 10/11 · x64</div>
-          <div className="val">.exe</div>
-        </div>
-        <div className="row release-row">
-          <div className="term">Portable Windows bundle</div>
-          <div className="val">.zip</div>
-        </div>
-        <div className="row release-row">
-          <div className="term">Source · release notes</div>
-          <div className="val">repo</div>
-        </div>
+        {home.release.matrix.map((row) => (
+          <div className="row release-row" key={row.term}>
+            <div className="term">{row.term}</div>
+            <div className="val">{row.value}</div>
+          </div>
+        ))}
       </div>
       <div className="release-actions">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Installer</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.release.installerCta}</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.release.portableCta}</a>
       </div>
     </div>
   </div>
@@ -833,49 +731,24 @@ export default function HomePage() {
         <div className="footer-brand-row">
           <img src={chronLogo} alt="CHRON.OS" />
         </div>
-        <p>CHRON.OS — local-first archival intelligence. A Hyperion Industries system.</p>
+        <p>{footer.description}</p>
       </div>
-      <div className="foot-col">
-        <h6>Product</h6>
-        <ul>
-          <li><a href="#system">How it works</a></li>
-          <li><a href="#archivist">The Archivist</a></li>
-          <li><a href="#atlas">See it inside</a></li>
-          <li><a href="#capabilities">What it does</a></li>
-        </ul>
-      </div>
-      <div className="foot-col">
-        <h6>Trust</h6>
-        <ul>
-          <li><a href="#privacy">On-device</a></li>
-          <li><a href="#privacy">Never moves files</a></li>
-          <li><a href="#beta">Beta status</a></li>
-          <li><a href="#privacy">Privacy notes</a></li>
-        </ul>
-      </div>
-      <div className="foot-col">
-        <h6>Distribution</h6>
-        <ul>
-          <li><a href={releaseLinks.installer} target="_blank" rel="noopener">Windows installer</a></li>
-          <li><a href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a></li>
-          <li><a href={releaseLinks.github} target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="#system">Use Cases</a></li>
-          <li><a href="CHANGELOG.md" target="_blank" rel="noopener">What's new</a></li>
-        </ul>
-      </div>
-      <div className="foot-col">
-        <h6>Legal</h6>
-        <ul>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="mailto:hello@hyperion-industries.dev">hello@hyperion-industries.dev</a></li>
-        </ul>
-      </div>
+      {footer.columns.map((column) => (
+        <div className="foot-col" key={column.title}>
+          <h6>{column.title}</h6>
+          <ul>
+            {column.links.map((link) => (
+              <li key={`${column.title}-${link.label}`}>
+                <a href={hrefFor(link.href)} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener' : undefined}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
     <div className="foot-bottom">
-      <span className="sig">CHRON<em>.OS</em> · <a href="https://hyperion-industries.dev" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>HYPERION INDUSTRIES</a></span>
-      <span>© 2026 · LOCAL-FIRST · BETA</span>
+      <span className="sig">{footer.bottomBrand.replace('.OS', '')}<em>.OS</em> · <a href={footer.bottomPartnerHref} style={{ color: 'var(--cyan)', textDecoration: 'none' }}>{footer.bottomPartner}</a></span>
+      <span>{footer.status}</span>
     </div>
   </div>
 </footer>
