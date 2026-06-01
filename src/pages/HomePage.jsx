@@ -1,11 +1,110 @@
 
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../index.css';
-import content from '../data/content.json';
+import { useTheme } from '../context/ThemeContext';
 
+const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
+
+const releaseLinks = {
+  installer: 'https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe',
+  portable: 'https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip',
+  github: 'https://github.com/Code-Xer0/CHR0N.OS-Preview',
+};
+
+const chronLogo = asset('chronos-logo-horizontal.png');
+const chronIcon = asset('chronos-icon.png');
+
+const galleryShots = [
+  {
+    tab: 'Semantic Atlas',
+    src: asset('extracted_5.png'),
+    alt: 'Semantic Atlas — domain field with clusters, inheritance lines, and seven active semantic domains',
+    panels: [
+      ['Surface relationships', 'Clusters show where artifacts collide. Strings show inheritance, recurrence, semantic echo.'],
+      ['Mode tabs', 'Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field.'],
+      ['7 active domains', 'application/pdf · image/png · image/jpeg · text/plain · visual media · civil litigation · housing law.'],
+    ],
+  },
+  {
+    tab: 'Constellation',
+    src: asset('extracted_6.png'),
+    alt: 'Knowledge Constellation — orbital lanes around a User Knowledge Well',
+    panels: [
+      ['Living constellation', 'Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well.'],
+      ['549 nodes · 120 edges', '205 domains across the live archive. Drag to pan, click a domain to isolate.'],
+      ['User Knowledge Well', 'The gravitational center. Significance accumulates here over time.'],
+    ],
+  },
+  {
+    tab: 'Artifact Detail',
+    src: asset('extracted_7.png'),
+    alt: 'Artifact detail — meaning panel with significance, role, horizon, emotional valence',
+    panels: [
+      ['Meaning panel', 'Significance, score, role, horizon, emotional valence — all attached to the artifact.'],
+      ['User-confirmed outranks model', 'Local user-weighted context wins over inferred meaning.'],
+      ['Tags & concepts', 'document, applied, research paper, specification. Editable, traceable.'],
+    ],
+  },
+  {
+    tab: 'Trace Relations',
+    src: asset('extracted_8.png'),
+    alt: 'Trace relations — follow lineage between source documents and derivatives',
+    panels: [
+      ['Trace relations', 'Every related artifact, every shared domain, every chain of inheritance — kept and walkable.'],
+      ['Cross-form trails', 'Whitepapers, analyses, constitutions, landing pages — all on the same field.'],
+      ['No data is orphaned', 'If it entered the archive, the path back is preserved.'],
+    ],
+  },
+  {
+    tab: 'Archivist',
+    src: asset('extracted_9.png'),
+    alt: 'Archivist — chat surface ready with archive context',
+    panels: [
+      ['Ready with context', 'Ask Archivist to find files, explain structure, create folders, or review the ontology.'],
+      ['Local history', 'Pane and bubble share the same local history. Stays on this device unless context is required.'],
+      ['Operational', 'archivist-system / v1.8.0 · 549 indexed.'],
+    ],
+  },
+  {
+    tab: 'Dashboard',
+    src: asset('extracted_10.png'),
+    alt: 'Dashboard — domains, document forms, significance, temporal activity',
+    panels: [
+      ['Domains, forms, significance', 'Live counts. Whitepaper, note, specification, report, research paper.'],
+      ['Temporal activity', 'Ledger anchors by age window — 7d · 30d · 90d · older.'],
+      ['Recent / high salience', 'What just landed and what carries weight, surfaced together.'],
+    ],
+  },
+  {
+    tab: 'Files',
+    src: asset('extracted_11.png'),
+    alt: 'Local source browser — preview originals without mutating them',
+    panels: [
+      ['Local source browser', 'Inspect file weight; copy selected sources into CHRON.OS without changing the original.'],
+      ['Originals untouched', 'Working copies only. Source paths and timestamps preserved.'],
+      ['Quick places', 'Home · Downloads · Documents · Current root. Pin any drive.'],
+    ],
+  },
+];
+
+const heroPipeline = [
+  ['Source', 'Original path and intake context remain visible.'],
+  ['Hash', 'Every artifact gets a cryptographic anchor.'],
+  ['Metadata', 'Sidecar facts stay local and inspectable.'],
+  ['Meaning', 'User-weighted context can evolve over time.'],
+  ['Trace', 'Relationships remain walkable across projects.'],
+];
+
+const heroCapabilities = [
+  ['Archive', 'Preserve originals, metadata, hashes, and paths.'],
+  ['Understand', 'Classify by domain, form, role, and salience.'],
+  ['Navigate', 'Move by timeline, ontology, duplicate, or relation.'],
+  ['Remember', 'Keep continuity across long-running work.'],
+];
 
 export default function HomePage() {
-  const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
+  const { isLightMode, toggleTheme } = useTheme();
+  const [activeShot, setActiveShot] = useState(0);
 
   useEffect(() => {
     
@@ -66,31 +165,6 @@ export default function HomePage() {
     window.addEventListener('resize', resize);
     resize();
     requestAnimationFrame(draw);
-  })();
-
-  // Product gallery — tab switching + auto-cycle
-  (function () {
-    const root = document.getElementById('gallery');
-    if (!root) return;
-    const buttons = root.querySelectorAll('.gallery-tabs button');
-    const imgs = root.querySelectorAll('.gallery-stage img');
-    const foots = root.querySelectorAll('.gallery-foot .gf');
-
-    function setShot(i) {
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.shot == i));
-      imgs.forEach(im => im.classList.toggle('active', im.dataset.shot == i));
-      foots.forEach(f => f.classList.toggle('active', f.dataset.shot == i));
-    }
-
-    buttons.forEach(b => b.addEventListener('click', () => {
-      setShot(b.dataset.shot);
-    }));
-
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % buttons.length;
-      setShot(idx);
-    }, 6000);
   })();
 
   // Atlas SVG — procedurally generated nodes, rings, and inheritance lines
@@ -154,6 +228,13 @@ export default function HomePage() {
 
   }, []);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveShot((current) => (current + 1) % galleryShots.length);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <>
       
@@ -165,7 +246,10 @@ export default function HomePage() {
 {/* Top utility bar */}
 <div className="topbar">
   <div className="wrap topbar-inner">
-    <span className="live">LOCAL NODE · INTEGRITY OK · UTC <em id="clock">00:00:00</em> · BUILT BY <em style={{ color: 'var(--cyan)' }}>HYPERION INDUSTRIES</em></span>
+    <span className="live">LOCAL NODE <em>INTEGRITY OK</em></span>
+    <span className="topbar-segment"><strong>UTC</strong><em id="clock">00:00:00</em></span>
+    <span className="topbar-segment topbar-hide-sm"><strong>CANONICAL</strong><em>ON DEVICE</em></span>
+    <span className="topbar-segment topbar-hide-md"><strong>BUILT BY</strong><em>HYPERION INDUSTRIES</em></span>
   </div>
 </div>
 
@@ -173,8 +257,7 @@ export default function HomePage() {
 <header className="nav">
   <div className="wrap nav-inner">
     <a className="brand" href="#top">
-      <img src={asset('chronos-logo-horizontal.png')} alt="CHRON.OS" />
-      <span className="wordmark">CHRON<span className="os">.OS</span></span>
+      <img src={chronLogo} alt="CHRON.OS" />
     </a>
     <nav className="nav-links">
       <a href="#system">System</a>
@@ -182,12 +265,15 @@ export default function HomePage() {
       <a href="#atlas">Atlas</a>
       <a href="#privacy">Privacy</a>
       <a href="#beta">Beta</a>
-      <a href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">GitHub</a>
+      <a href={releaseLinks.github} target="_blank" rel="noopener">GitHub</a>
       <a href="privacy.html">Legal</a>
     </nav>
     <div className="nav-cta">
-      <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">View on GitHub</a>
-      <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download installer</a>
+      <button className="theme-toggle" type="button" onClick={toggleTheme} title={isLightMode ? 'Switch to dark mode' : 'Switch to light mode'} aria-label="Toggle color theme">
+        {isLightMode ? '☾' : '☼'}
+      </button>
+      <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">View on GitHub</a>
+      <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download installer</a>
     </div>
   </div>
 </header>
@@ -199,7 +285,7 @@ export default function HomePage() {
      ============================================================ */}
 <section className="hero">
   <div className="hero-grid">
-    <div>
+    <div className="hero-copy">
       <span className="eyebrow">Local-first archival intelligence</span>
       <h1>Your archive should remember <em>why things matter.</em></h1>
       <p className="lede">CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning — without making the cloud the source of truth.</p>
@@ -210,40 +296,93 @@ export default function HomePage() {
         <span className="pill">Built for high-context work</span>
       </div>
       <div className="cta-row">
-        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download Windows installer</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
         <a className="btn" href="#doctrine">Read the principles</a>
       </div>
-      <div className="trust">Public beta · Installer recommended · <span>Portable ZIP available for no-install use</span></div>
+      <div className="hero-assurance">
+        <span>Public beta</span>
+        <span>Installer recommended</span>
+        <span>Portable no-install path</span>
+      </div>
     </div>
 
-    {/* Orbital rig */}
-    <div className="orbit" aria-hidden="true">
-      <div className="corner tl"><span>SYS//</span> field active</div>
-      <div className="corner tr">epoch <span>2026.05.05</span></div>
-      <div className="corner bl">node <span>local-0</span></div>
-      <div className="corner br">integrity <span>OK</span></div>
-      <div className="crosshair"></div>
-      <div className="crosshair h"></div>
-      <div className="ring"></div>
-      <div className="ring r2"></div>
-      <div className="ring r3"></div>
-      <div className="ring r4"></div>
-      <div className="spinner">
-        <div className="node" style={{ top: 0, left: '50%', transform: 'translate(-50%,-50%)' }}></div>
-        <div className="node dim" style={{ top: '50%', left: '100%', transform: 'translate(-50%,-50%)' }}></div>
+    <div className="hero-console" aria-label="CHRON.OS local ontology console preview">
+      <div className="console-bar">
+        <span>ontology console</span>
+        <strong>local-0 / ready</strong>
       </div>
-      <div className="spinner s2">
-        <div className="node" style={{ top: '8%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
-        <div className="node dim" style={{ top: '50%', left: '8%', transform: 'translate(-50%,-50%)' }}></div>
-        <div className="node dim" style={{ top: '92%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
+      <div className="console-main">
+        <div className="orbit hero-orbit" aria-hidden="true">
+          <div className="corner tl"><span>SYS//</span> field active</div>
+          <div className="corner tr">epoch <span>2026.05.05</span></div>
+          <div className="corner bl">node <span>local-0</span></div>
+          <div className="corner br">integrity <span>OK</span></div>
+          <div className="crosshair"></div>
+          <div className="crosshair h"></div>
+          <div className="ring"></div>
+          <div className="ring r2"></div>
+          <div className="ring r3"></div>
+          <div className="ring r4"></div>
+          <div className="spinner">
+            <div className="node" style={{ top: 0, left: '50%', transform: 'translate(-50%,-50%)' }}></div>
+            <div className="node dim" style={{ top: '50%', left: '100%', transform: 'translate(-50%,-50%)' }}></div>
+          </div>
+          <div className="spinner s2">
+            <div className="node" style={{ top: '8%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
+            <div className="node dim" style={{ top: '50%', left: '8%', transform: 'translate(-50%,-50%)' }}></div>
+            <div className="node dim" style={{ top: '92%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
+          </div>
+          <div className="spinner s3">
+            <div className="node dim" style={{ top: '18%', left: '18%', transform: 'translate(-50%,-50%)' }}></div>
+            <div className="node" style={{ top: '82%', left: '82%', transform: 'translate(-50%,-50%)' }}></div>
+          </div>
+          <img className="mark" src={chronIcon} alt="" />
+        </div>
+
+        <div className="console-rail">
+          <div className="console-panel release-readout">
+            <div className="panel-kicker">public beta</div>
+            <strong>Windows installer ready</strong>
+            <span>Portable ZIP remains available for no-install testing.</span>
+          </div>
+          <div className="console-panel graph-readout" aria-hidden="true">
+            <svg viewBox="0 0 240 132">
+              <path d="M25 92 C56 42 82 55 104 73 S151 108 212 32" />
+              <path d="M38 38 C76 78 122 20 158 72 S196 88 224 62" />
+              <circle cx="25" cy="92" r="5" />
+              <circle cx="78" cy="53" r="3" />
+              <circle cx="104" cy="73" r="4" />
+              <circle cx="158" cy="72" r="4" />
+              <circle cx="212" cy="32" r="5" />
+              <circle cx="224" cy="62" r="3" />
+            </svg>
+            <div className="graph-meta">
+              <span>549 artifacts</span>
+              <span>120 edges</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="spinner s3">
-        <div className="node dim" style={{ top: '18%', left: '18%', transform: 'translate(-50%,-50%)' }}></div>
-        <div className="node" style={{ top: '82%', left: '82%', transform: 'translate(-50%,-50%)' }}></div>
+      <div className="pipeline-readout">
+        {heroPipeline.map(([label, desc], index) => (
+          <div className="pipeline-step" key={label}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{label}</strong>
+            <p>{desc}</p>
+          </div>
+        ))}
       </div>
-      <div className="mark"></div>
     </div>
+  </div>
+
+  <div className="hero-capability-strip">
+    {heroCapabilities.map(([title, copy]) => (
+      <div className="hero-capability" key={title}>
+        <strong>{title}</strong>
+        <span>{copy}</span>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -262,7 +401,7 @@ export default function HomePage() {
   <div className="pillars">
     <div className="pillar">
       <div className="pillar-num">— 01</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
         <rect x="3" y="5" width="18" height="14" rx="1"/>
         <path d="M3 9h18M8 5v14"/>
       </svg>
@@ -271,7 +410,7 @@ export default function HomePage() {
     </div>
     <div className="pillar">
       <div className="pillar-num">— 02</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
         <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
         <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
       </svg>
@@ -280,7 +419,7 @@ export default function HomePage() {
     </div>
     <div className="pillar">
       <div className="pillar-num">— 03</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
         <path d="M3 12h6l3-6 3 12 3-6h3"/>
       </svg>
       <h3>Navigate</h3>
@@ -288,7 +427,7 @@ export default function HomePage() {
     </div>
     <div className="pillar">
       <div className="pillar-num">— 04</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7v5l3 2"/>
       </svg>
@@ -377,64 +516,34 @@ export default function HomePage() {
     These are real screens from the live beta. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time.
   </p>
 
-  <div className="gallery" id="gallery">
-    <div className="gallery-head">
-      <div className="gallery-tabs">
-        <button className="active" data-shot="0">Semantic Atlas</button>
-        <button data-shot="1">Constellation</button>
-        <button data-shot="2">Artifact Detail</button>
-        <button data-shot="3">Trace Relations</button>
-        <button data-shot="4">Archivist</button>
-        <button data-shot="5">Dashboard</button>
-        <button data-shot="6">Files</button>
+    <div className="gallery" id="gallery">
+      <div className="gallery-head">
+        <div className="gallery-tabs">
+          {galleryShots.map((shot, index) => (
+            <button
+              key={shot.tab}
+              className={activeShot === index ? 'active' : ''}
+              onClick={() => setActiveShot(index)}
+              type="button"
+            >
+              {shot.tab}
+            </button>
+          ))}
       </div>
       <div className="gallery-meta">v0.9.4 · live capture</div>
     </div>
     <div className="gallery-stage">
-      <img className="active" data-shot="0" src={asset('extracted_5.png')} alt="Semantic Atlas — domain field with clusters, inheritance lines, and seven active semantic domains" />
-      <img data-shot="1" src={asset('extracted_6.png')} alt="Knowledge Constellation — orbital lanes around a User Knowledge Well" />
-      <img data-shot="2" src={asset('extracted_7.png')} alt="Artifact detail — meaning panel with significance, role, horizon, emotional valence" />
-      <img data-shot="3" src={asset('extracted_8.png')} alt="Trace relations — follow lineage between source documents and derivatives" />
-      <img data-shot="4" src={asset('extracted_9.png')} alt="Archivist — chat surface ready with archive context" />
-      <img data-shot="5" src={asset('extracted_10.png')} alt="Dashboard — domains, document forms, significance, temporal activity" />
-      <img data-shot="6" src={asset('extracted_11.png')} alt="Local source browser — preview originals without mutating them" />
+      {galleryShots.map((shot, index) => (
+        <img key={shot.tab} className={activeShot === index ? 'active' : ''} src={shot.src} alt={shot.alt} />
+      ))}
     </div>
     <div className="gallery-foot">
-      <div className="gf active" data-shot="0">
-        <div><div className="lab">Surface relationships</div><p>Clusters show where artifacts collide. Strings show inheritance, recurrence, semantic echo.</p></div>
-        <div><div className="lab">Mode tabs</div><p>Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field.</p></div>
-        <div><div className="lab">7 active domains</div><p>application/pdf · image/png · image/jpeg · text/plain · visual media · civil litigation · housing law.</p></div>
-      </div>
-      <div className="gf" data-shot="1">
-        <div><div className="lab">Living constellation</div><p>Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well.</p></div>
-        <div><div className="lab">549 nodes · 120 edges</div><p>205 domains across the live archive. Drag to pan, click a domain to isolate.</p></div>
-        <div><div className="lab">User Knowledge Well</div><p>The gravitational center. Significance accumulates here over time.</p></div>
-      </div>
-      <div className="gf" data-shot="2">
-        <div><div className="lab">Meaning panel</div><p>Significance, score, role, horizon, emotional valence — all attached to the artifact.</p></div>
-        <div><div className="lab">User-confirmed outranks model</div><p>Local user-weighted context wins over inferred meaning.</p></div>
-        <div><div className="lab">Tags &amp; concepts</div><p>document, applied, research paper, specification. Editable, traceable.</p></div>
-      </div>
-      <div className="gf" data-shot="3">
-        <div><div className="lab">Trace relations</div><p>Every related artifact, every shared domain, every chain of inheritance — kept and walkable.</p></div>
-        <div><div className="lab">Cross-form trails</div><p>Whitepapers, analyses, constitutions, landing pages — all on the same field.</p></div>
-        <div><div className="lab">No data is orphaned</div><p>If it entered the archive, the path back is preserved.</p></div>
-      </div>
-      <div className="gf" data-shot="4">
-        <div><div className="lab">Ready with context</div><p>Ask Archivist to find files, explain structure, create folders, or review the ontology.</p></div>
-        <div><div className="lab">Local history</div><p>Pane and bubble share the same local history. Stays on this device unless context is required.</p></div>
-        <div><div className="lab">Operational</div><p>archivist-system / v1.8.0 · 549 indexed.</p></div>
-      </div>
-      <div className="gf" data-shot="5">
-        <div><div className="lab">Domains, forms, significance</div><p>Live counts. Whitepaper, note, specification, report, research paper.</p></div>
-        <div><div className="lab">Temporal activity</div><p>Ledger anchors by age window — 7d · 30d · 90d · older.</p></div>
-        <div><div className="lab">Recent / high salience</div><p>What just landed and what carries weight, surfaced together.</p></div>
-      </div>
-      <div className="gf" data-shot="6">
-        <div><div className="lab">Local source browser</div><p>Inspect file weight; copy selected sources into CHRON.OS without changing the original.</p></div>
-        <div><div className="lab">Originals untouched</div><p>Working copies only. Source paths and timestamps preserved.</p></div>
-        <div><div className="lab">Quick places</div><p>Home · Downloads · Documents · Current root. Pin any drive.</p></div>
-      </div>
+      {galleryShots[activeShot].panels.map(([label, copy]) => (
+        <div className="gf active" key={label}>
+          <div className="lab">{label}</div>
+          <p>{copy}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -593,26 +702,26 @@ export default function HomePage() {
       <svg viewBox="0 0 480 360" fill="none">
         <defs>
           <linearGradient id="grad-edge" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#00D9FF" stop-opacity=".0"/>
-            <stop offset="100%" stop-color="#00D9FF" stop-opacity=".7"/>
+            <stop offset="0%" stopColor="#00D9FF" stopOpacity=".0"/>
+            <stop offset="100%" stopColor="#00D9FF" stopOpacity=".7"/>
           </linearGradient>
         </defs>
 
         {/* machine boundary */}
-        <rect x="20" y="60" width="280" height="280" rx="6" stroke="#00D9FF" stroke-opacity=".5" stroke-dasharray="2 4"/>
-        <text x="32" y="50" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing=".18em" fill="#00D9FF">YOUR MACHINE · CANONICAL</text>
+        <rect x="20" y="60" width="280" height="280" rx="6" stroke="#00D9FF" strokeOpacity=".5" strokeDasharray="2 4"/>
+        <text x="32" y="50" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing=".18em" fill="#00D9FF">YOUR MACHINE · CANONICAL</text>
 
         {/* nodes inside machine */}
-        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6F0F7">
-          <g><rect x="48" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" stroke-opacity=".25"/><text x="98" y="127" text-anchor="middle">Sources</text></g>
-          <g><rect x="170" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" stroke-opacity=".25"/><text x="220" y="127" text-anchor="middle">Index</text></g>
-          <g><rect x="48" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" stroke-opacity=".25"/><text x="98" y="207" text-anchor="middle">Metadata</text></g>
-          <g><rect x="170" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#00D9FF" stroke-opacity=".7"/><text x="220" y="207" text-anchor="middle" fill="#00D9FF">Archivist</text></g>
-          <g><rect x="48" y="260" width="222" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" stroke-opacity=".25"/><text x="159" y="287" text-anchor="middle">Atlas · Constellation · Ontology</text></g>
+        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#E6F0F7">
+          <g><rect x="48" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="98" y="127" textAnchor="middle">Sources</text></g>
+          <g><rect x="170" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="220" y="127" textAnchor="middle">Index</text></g>
+          <g><rect x="48" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="98" y="207" textAnchor="middle">Metadata</text></g>
+          <g><rect x="170" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#00D9FF" strokeOpacity=".7"/><text x="220" y="207" textAnchor="middle" fill="#00D9FF">Archivist</text></g>
+          <g><rect x="48" y="260" width="222" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="159" y="287" textAnchor="middle">Atlas · Constellation · Ontology</text></g>
         </g>
 
         {/* internal edges */}
-        <g stroke="#E6F0F7" stroke-opacity=".25">
+        <g stroke="#E6F0F7" strokeOpacity=".25">
           <path d="M148 122 L170 122"/>
           <path d="M98 144 L98 180"/>
           <path d="M220 144 L220 180"/>
@@ -621,14 +730,14 @@ export default function HomePage() {
         </g>
 
         {/* gated bridge to external */}
-        <path d="M300 180 L380 180" stroke="url(#grad-edge)" stroke-width="1.2" stroke-dasharray="3 4"/>
-        <text x="340" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing=".18em" fill="#00D9FF" fill-opacity=".7">GATED</text>
+        <path d="M300 180 L380 180" stroke="url(#grad-edge)" strokeWidth="1.2" strokeDasharray="3 4"/>
+        <text x="340" y="172" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="9" letterSpacing=".18em" fill="#00D9FF" fillOpacity=".7">GATED</text>
 
         {/* external node */}
-        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6F0F7" fill-opacity=".55">
-          <rect x="380" y="158" width="80" height="44" rx="3" fill="transparent" stroke="#E6F0F7" stroke-opacity=".18" stroke-dasharray="3 3"/>
-          <text x="420" y="178" text-anchor="middle">External</text>
-          <text x="420" y="192" text-anchor="middle" font-size="9" fill-opacity=".5">opt-in</text>
+        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#E6F0F7" fillOpacity=".55">
+          <rect x="380" y="158" width="80" height="44" rx="3" fill="transparent" stroke="#E6F0F7" strokeOpacity=".18" strokeDasharray="3 3"/>
+          <text x="420" y="178" textAnchor="middle">External</text>
+          <text x="420" y="192" textAnchor="middle" fontSize="9" fillOpacity=".5">opt-in</text>
         </g>
       </svg>
     </div>
@@ -679,56 +788,34 @@ export default function HomePage() {
       <h3>Start building an archive <em>you can actually navigate.</em></h3>
       <p>Point CHRON.OS at a folder and let it begin organizing your documents, media, research, and projects into a connected archive you can explore and search over time.</p>
       <div className="cta-row">
-        <a className="btn btn-primary" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Download Windows installer</a>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">View on GitHub</a>
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download Windows installer</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
+        <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">View on GitHub</a>
       </div>
       <p className="trust">Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.</p>
     </div>
-    <div>
-      <div className="ontology" style={{ background: 'rgba(4,8,26,.5)' }}>
+    <div className="release-panel">
+      <div className="ontology release-matrix">
         <div className="head">
           <span>Install · footprint</span>
-          <span className="live-dot">READY</span>
+          <span className="live-dot">WINDOWS</span>
         </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">macOS · 12+ · Apple Silicon &amp; Intel</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>.dmg</div>
-        </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
+        <div className="row release-row">
           <div className="term">Windows · 10/11 · x64</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>.exe</div>
+          <div className="val">.exe</div>
         </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">Linux · AppImage / .deb</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>build</div>
+        <div className="row release-row">
+          <div className="term">Portable Windows bundle</div>
+          <div className="val">.zip</div>
         </div>
-        <a className="btn" href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">View on GitHub</a>
+        <div className="row release-row">
+          <div className="term">Source · release notes</div>
+          <div className="val">repo</div>
+        </div>
       </div>
-      <p className="trust">Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.</p>
-    </div>
-    <div>
-      <div className="ontology" style={{ background: 'rgba(4,8,26,.5)' }}>
-        <div className="head">
-          <span>Install · footprint</span>
-          <span className="live-dot">READY</span>
-        </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">macOS · 12+ · Apple Silicon &amp; Intel</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>.dmg</div>
-        </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">Windows · 10/11 · x64</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>.exe</div>
-        </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">Linux · AppImage / .deb</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>build</div>
-        </div>
-        <div className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-          <div className="term">Source · GitHub mirror</div>
-          <div className="val" style={{ color: 'var(--cyan)' }}>repo</div>
-        </div>
+      <div className="release-actions">
+        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Installer</a>
+        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a>
       </div>
     </div>
   </div>
@@ -743,7 +830,9 @@ export default function HomePage() {
   <div className="wrap">
     <div className="foot-grid">
       <div className="foot-brand">
-        <img src={asset('chronos-logo-horizontal.png')} alt="CHRON.OS" />
+        <div className="footer-brand-row">
+          <img src={chronLogo} alt="CHRON.OS" />
+        </div>
         <p>CHRON.OS — local-first archival intelligence. A Hyperion Industries system.</p>
       </div>
       <div className="foot-col">
@@ -767,9 +856,9 @@ export default function HomePage() {
       <div className="foot-col">
         <h6>Distribution</h6>
         <ul>
-          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe" target="_blank" rel="noopener">Windows installer</a></li>
-          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip" target="_blank" rel="noopener">Portable ZIP</a></li>
-          <li><a href="https://github.com/Code-Xer0/CHR0N.OS-Preview" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href={releaseLinks.installer} target="_blank" rel="noopener">Windows installer</a></li>
+          <li><a href={releaseLinks.portable} target="_blank" rel="noopener">Portable ZIP</a></li>
+          <li><a href={releaseLinks.github} target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="#system">Use Cases</a></li>
           <li><a href="CHANGELOG.md" target="_blank" rel="noopener">What's new</a></li>
         </ul>
