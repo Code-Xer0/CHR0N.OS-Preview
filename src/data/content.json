@@ -1,7 +1,7 @@
 {
   "releaseLinks": {
-    "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-windows-setup.exe",
-    "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.1-beta.1/CHRON.OS-v0.2.1-beta.1-portable-windows.zip",
+    "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows-setup.exe",
+    "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-portable-windows.zip",
     "github": "https://github.com/Code-Xer0/CHR0N.OS-Preview"
   },
   "home": {
@@ -30,8 +30,8 @@
       "releaseTitle": "Windows installer ready",
       "releaseBody": "Portable ZIP remains available for no-install testing.",
       "graphMeta": [
-        "549 artifacts",
-        "120 edges"
+        "128 demo artifacts",
+        "42 demo links"
       ]
     },
     "pipeline": [
@@ -78,34 +78,34 @@
       {
         "tab": "Semantic Atlas",
         "asset": "extracted_5.png",
-        "alt": "Semantic Atlas — domain field with clusters, inheritance lines, and seven active semantic domains",
+        "alt": "Semantic Atlas — synthetic demo domain field with clusters and relationship lines",
         "panels": [
           {
             "label": "Surface relationships",
-            "copy": "Clusters show where artifacts collide. Strings show inheritance, recurrence, semantic echo."
+            "copy": "Clusters show how synthetic demo artifacts relate without exposing real archive contents."
           },
           {
             "label": "Mode tabs",
             "copy": "Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field."
           },
           {
-            "label": "7 active domains",
-            "copy": "application/pdf · image/png · image/jpeg · text/plain · visual media · civil litigation · housing law."
+            "label": "Neutral demo domains",
+            "copy": "Reference PDFs · Project Briefs · Design Archive · Media Samples · Research Notes."
           }
         ]
       },
       {
         "tab": "Constellation",
         "asset": "extracted_6.png",
-        "alt": "Knowledge Constellation — orbital lanes around a User Knowledge Well",
+        "alt": "Knowledge Constellation — synthetic demo orbital lanes around a knowledge well",
         "panels": [
           {
             "label": "Living constellation",
             "copy": "Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well."
           },
           {
-            "label": "549 nodes · 120 edges",
-            "copy": "205 domains across the live archive. Drag to pan, click a domain to isolate."
+            "label": "128 demo nodes · 42 links",
+            "copy": "Neutral domains across a synthetic archive. Drag to pan, click a domain to isolate."
           },
           {
             "label": "User Knowledge Well",
@@ -116,11 +116,11 @@
       {
         "tab": "Artifact Detail",
         "asset": "extracted_7.png",
-        "alt": "Artifact detail — meaning panel with significance, role, horizon, emotional valence",
+        "alt": "Artifact detail — synthetic demo meaning panel with significance, role, and horizon",
         "panels": [
           {
             "label": "Meaning panel",
-            "copy": "Significance, score, role, horizon, emotional valence — all attached to the artifact."
+            "copy": "Significance, score, role, and horizon can be attached to an artifact."
           },
           {
             "label": "User-confirmed outranks model",
@@ -128,7 +128,7 @@
           },
           {
             "label": "Tags & concepts",
-            "copy": "document, applied, research paper, specification. Editable, traceable."
+            "copy": "brief, reference, design, media sample. Editable, traceable."
           }
         ]
       },
@@ -143,7 +143,7 @@
           },
           {
             "label": "Cross-form trails",
-            "copy": "Whitepapers, analyses, constitutions, landing pages — all on the same field."
+            "copy": "Briefs, notes, media samples, and design references stay on the same field."
           },
           {
             "label": "No data is orphaned",
@@ -166,7 +166,7 @@
           },
           {
             "label": "Operational",
-            "copy": "archivist-system / v1.8.0 · 549 indexed."
+            "copy": "archivist-system / v0.2.2 · synthetic demo context."
           }
         ]
       },
@@ -177,7 +177,7 @@
         "panels": [
           {
             "label": "Domains, forms, significance",
-            "copy": "Live counts. Whitepaper, note, specification, report, research paper."
+            "copy": "Demo counts for reference PDFs, notes, briefs, media samples, and design archive items."
           },
           {
             "label": "Temporal activity",
@@ -185,7 +185,7 @@
           },
           {
             "label": "Recent / high salience",
-            "copy": "What just landed and what carries weight, surfaced together."
+            "copy": "Recent demo items and high-salience examples, surfaced together."
           }
         ]
       },

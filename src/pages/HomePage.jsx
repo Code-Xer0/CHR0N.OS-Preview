@@ -386,7 +386,7 @@ export default function HomePage() {
     <div className="chain-step">
       <div className="label">01 · Source</div>
       <div className="name">Original</div>
-      <div className="desc">C:\Users\…\source.pdf — untouched. Path, drive, and intake context preserved.</div>
+      <div className="desc">C:\DemoArchive\source.pdf — untouched. Path, drive, and intake context preserved.</div>
     </div>
     <div className="chain-step">
       <div className="label">02 · Hash</div>
@@ -447,7 +447,7 @@ export default function HomePage() {
       <h2>See how the archive <em>works in practice.</em></h2>
     </div>
     <div className="section-copy-card">
-      <p>These are real screens from the live beta. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time.</p>
+      <p>These screens use synthetic demo data. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time without exposing a private archive.</p>
       <div className="copy-chip-row" aria-hidden="true">
         <span>Atlas</span>
         <span>Constellation</span>
@@ -471,7 +471,7 @@ export default function HomePage() {
             </button>
           ))}
       </div>
-      <div className="gallery-meta">v0.9.4 · live capture</div>
+      <div className="gallery-meta">v0.2.2 · synthetic demo</div>
     </div>
     <div className="gallery-stage">
       {galleryShots.map((shot, index) => (
@@ -515,7 +515,7 @@ export default function HomePage() {
         <li><span className="tick"></span>Constellation &amp; Atlas relationship views</li>
         <li><span className="tick"></span>Local-first desktop workflow</li>
       </ul>
-      <div className="cap-foot">verified · v0.9.4 · 549 indexed</div>
+      <div className="cap-foot">verified · v0.2.2 · synthetic demo dataset</div>
     </div>
 
     <div className="cap dev">
@@ -705,8 +705,8 @@ export default function HomePage() {
       <p>The core archive, file preview, duplicate detection, timeline navigation, dashboard, and relationship views are all working. The instrument works. The archive grows.</p>
       <p>Advanced media understanding, external cloud tools, and deeper Atlas performance are under active development.</p>
       <div className="copy-chip-row" aria-hidden="true">
-        <span>v0.9.4</span>
-        <span>Stable channel</span>
+        <span>v0.2.2-beta.1</span>
+        <span>Beta channel</span>
         <span>Gated providers</span>
       </div>
     </div>
@@ -715,13 +715,13 @@ export default function HomePage() {
   <div className="status-grid">
     <div className="stat-card">
       <div className="lab">Build · current</div>
-      <div className="num">v0.9<span className="small">.4</span></div>
+      <div className="num">v0.2<span className="small">.2</span></div>
       <div className="sub">public beta · stable channel</div>
     </div>
     <div className="stat-card">
-      <div className="lab">Index · live</div>
-      <div className="num">549<span className="small"> artifacts</span></div>
-      <div className="sub">186 media · 357 documents · 6 archives</div>
+      <div className="lab">Index · demo</div>
+      <div className="num">128<span className="small"> artifacts</span></div>
+      <div className="sub">32 media · 84 documents · 12 project refs</div>
     </div>
     <div className="stat-card">
       <div className="lab">Custody · model</div>

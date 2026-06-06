@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.2.2-beta.1 - 2026-06-06
+
+Public Windows beta refresh focused on commercial-safe presentation and the latest CHR0N.OS desktop build.
+
+Includes:
+
+- app UI version/channel updated to v0.2.2-beta.1 / Beta channel
+- Settings deck/drawer UI, Operator skin polish, GUI updater lane, and read-only Hyperion Connect/Nest posture surfaces
+- public preview site gallery replaced with synthetic demo captures instead of real archive screenshots
+- fresh Windows setup EXE, MSI, portable ZIP, and SHA-256 checksum files
+- public preview site download links updated to the v0.2.2-beta.1 GitHub release
+
+Known limitations:
+
+- public beta; use test/non-critical data first
+- Windows may warn on unsigned beta builds
+- MSI/internal product version is 0.2.2 while the public release tag and UI are v0.2.2-beta.1
+- OAuth production verification, NAS polish, full media inference, and deep Atlas optimization remain in progress
+
 ## v0.2.1-beta.1 - 2026-05-25
 
 Public Windows beta refresh built from the current stable mainline core.
