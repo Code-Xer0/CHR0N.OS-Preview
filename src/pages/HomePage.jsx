@@ -187,10 +187,10 @@ export default function HomePage() {
       <a href="#system">System</a>
       <a href="#archivist">Archivist</a>
       <a href="#atlas">Atlas</a>
+      <a href="#usecases">Use Cases</a>
+      <a href="#videos">Videos</a>
       <a href="#privacy">Privacy</a>
       <a href="#beta">Beta</a>
-      <a href={releaseLinks.github} target="_blank" rel="noopener">GitHub</a>
-      <a href="privacy.html">Legal</a>
     </nav>
     <div className="nav-cta">
       <button className="theme-toggle" type="button" onClick={toggleTheme} title={isLightMode ? 'Switch to dark mode' : 'Switch to light mode'} aria-label="Toggle color theme">
@@ -311,15 +311,15 @@ export default function HomePage() {
   <div className="section-lead">
     <div className="section-head">
       <span className="eyebrow">01 — System overview</span>
-      <h2>Most folders become digital junk drawers over time. <em>CHRON.OS helps turn that around.</em></h2>
+      <h2>Most folders become digital junk drawers over time. <em>CHRON.OS turns that into file memory.</em></h2>
     </div>
     <div className="section-copy-card">
-      <p>Most folders become unnavigable over time — files pile up, context disappears, and finding something from three years ago means hoping you remember what you named it. CHRON.OS turns scattered files into a searchable, connected archive. It keeps track of documents, media, timelines, duplicates, relationships, and project history so important things don't disappear into chaos.</p>
+      <p>CHRON.OS is the public beta lane for a larger local-first archive and memory ecosystem. The current build focuses on file capture, provenance, search, context, aging signals, and safe archive workflows while deeper automation and interop stay staged.</p>
       <div className="copy-chip-row" aria-hidden="true">
-        <span>Documents</span>
-        <span>Media</span>
-        <span>Timelines</span>
-        <span>Relationships</span>
+        <span>File lifecycle</span>
+        <span>Provenance</span>
+        <span>Search posture</span>
+        <span>Policy staging</span>
       </div>
     </div>
   </div>
@@ -331,8 +331,8 @@ export default function HomePage() {
         <rect x="3" y="5" width="18" height="14" rx="1"/>
         <path d="M3 9h18M8 5v14"/>
       </svg>
-      <h3>Archive</h3>
-      <p>Preserve files, metadata, source paths, hashes, and provenance. Originals are never mutated.</p>
+      <h3>Capture</h3>
+      <p>Copy important files into a working archive while preserving source context and original custody.</p>
     </div>
     <div className="pillar">
       <div className="pillar-num">— 02</div>
@@ -340,16 +340,16 @@ export default function HomePage() {
         <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
         <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
       </svg>
-      <h3>Understand</h3>
-      <p>Classify by domain, form, entities, emotional salience, and user-adjusted meaning weights.</p>
+      <h3>Inspect</h3>
+      <p>Read file shape, metadata, preview state, context, chronology, and early meaning signals.</p>
     </div>
     <div className="pillar">
       <div className="pillar-num">— 03</div>
       <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
         <path d="M3 12h6l3-6 3 12 3-6h3"/>
       </svg>
-      <h3>Navigate</h3>
-      <p>Move through files by chronology, ontology, relationships, duplicates, and trace paths.</p>
+      <h3>Organize</h3>
+      <p>Move through files by chronology, search state, duplicate posture, relationships, and trace paths.</p>
     </div>
     <div className="pillar">
       <div className="pillar-num">— 04</div>
@@ -357,8 +357,8 @@ export default function HomePage() {
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7v5l3 2"/>
       </svg>
-      <h3>Remember</h3>
-      <p>Build continuity across projects, cases, research, creative worlds, and operational records.</p>
+      <h3>Review</h3>
+      <p>Surface aging files, archive telemetry, and policy-ready decisions before any automation runs.</p>
     </div>
   </div>
 </section>
@@ -505,15 +505,16 @@ export default function HomePage() {
         <span className="status-dot live">Operational</span>
       </div>
       <ul>
-        <li><span className="tick"></span>Local document intake &amp; File Explorer previews</li>
+        <li><span className="tick"></span>Local archive intake &amp; File Explorer previews</li>
+        <li><span className="tick"></span>Provenance-preserving copy workflows</li>
         <li><span className="tick"></span>PDF, text, DOCX, image, and video preview support</li>
         <li><span className="tick"></span>Duplicate detection &amp; full duplicate scan</li>
-        <li><span className="tick"></span>Temporal ordering &amp; recent-import views</li>
+        <li><span className="tick"></span>Chronological sorting &amp; recent-import views</li>
         <li><span className="tick"></span>Dashboard metrics &amp; archive insights</li>
-        <li><span className="tick"></span>Archivist-assisted meaning &amp; classification</li>
-        <li><span className="tick"></span>Ontology / dimension navigation</li>
+        <li><span className="tick"></span>File/context inspection &amp; search-oriented organization</li>
+        <li><span className="tick"></span>Aging signals &amp; review-ready archive telemetry</li>
         <li><span className="tick"></span>Constellation &amp; Atlas relationship views</li>
-        <li><span className="tick"></span>Local-first desktop workflow</li>
+        <li><span className="tick"></span>Safe non-mutating source behavior</li>
       </ul>
       <div className="cap-foot">verified · v0.2.2 · synthetic demo dataset</div>
     </div>
@@ -524,17 +525,15 @@ export default function HomePage() {
         <span className="status-dot dev">Production track</span>
       </div>
       <ul>
-        <li><span className="tick"></span>Media inference for images and video</li>
-        <li><span className="tick"></span>Frame sampling &amp; visual entity learning</li>
-        <li><span className="tick"></span>Media-to-document linking</li>
+        <li><span className="tick"></span>Advanced automation and policy dispatch</li>
+        <li><span className="tick"></span>MNEM.OS continuity bridge</li>
+        <li><span className="tick"></span>Nest automation interop</li>
+        <li><span className="tick"></span>Cerberus telemetry proposals</li>
         <li><span className="tick"></span>Meaning Lab — user-guided ontology refinement</li>
-        <li><span className="tick"></span>Stronger dashboard analytics</li>
-        <li><span className="tick"></span>Semantic Atlas performance pass</li>
-        <li><span className="tick"></span>External trust surfaces (post verification)</li>
-        <li><span className="tick"></span>MCP-based local archive access for trusted tools</li>
-        <li><span className="tick"></span>NAS / local redundancy after safety review</li>
+        <li><span className="tick"></span>Cloud, NAS, and production OAuth polish</li>
+        <li><span className="tick"></span>Full multimodal inference and retention workflows</li>
       </ul>
-      <div className="cap-foot">phased rollout · q3–q4 2026</div>
+      <div className="cap-foot">staged lanes · not all public build features</div>
     </div>
 
     <div className="cap gated">
@@ -543,11 +542,11 @@ export default function HomePage() {
         <span className="status-dot gated">Gated</span>
       </div>
       <ul>
-        <li><span className="tick"></span>Production OAuth / Google Drive sync (pending domain, branding, consent screen, and provider verification)</li>
-        <li><span className="tick"></span>Full frame-by-frame video understanding</li>
+        <li><span className="tick"></span>Production OAuth / Google Drive sync without provider verification</li>
+        <li><span className="tick"></span>Full frame-by-frame video understanding or autonomous interpretation</li>
         <li><span className="tick"></span>Replacement of human review for legal, medical, financial, or safety-critical interpretation</li>
         <li><span className="tick"></span>Mutation of original source files — by design, never</li>
-        <li><span className="tick"></span>A requirement that the cloud be the canonical archive</li>
+        <li><span className="tick"></span>Delete, move, retention, or automation flows without explicit policy or operator approval</li>
         <li><span className="tick"></span>Enterprise-grade security claims beyond what is implemented</li>
       </ul>
       <div className="cap-foot">policy · what we will not pretend</div>
@@ -636,8 +635,14 @@ export default function HomePage() {
           <p>The full experience works without an internet connection. Cloud tools are optional and always opt-in.</p></div>
         <div className="stat">Offline-ok</div>
       </div>
-      <div className="item gated">
+      <div className="item">
         <div className="num">// 05</div>
+        <div className="body"><strong>Automation stays gated</strong>
+          <p>CHRON.OS begins non-destructively. Delete, move, retention, and automation flows require explicit policy or operator approval.</p></div>
+        <div className="stat">Approval</div>
+      </div>
+      <div className="item gated">
+        <div className="num">// 06</div>
         <div className="body"><strong>External providers gated</strong>
           <p>Cloud sync, OAuth, and third-party integrations are off by default. You enable them only if and when you need them.</p></div>
         <div className="stat">Gated</div>
@@ -693,20 +698,116 @@ export default function HomePage() {
 </section>
 
 {/* ============================================================
-     08 — BETA STATUS
+     08 — COMMERCIAL WEDGE
+     ============================================================ */}
+<section id="usecases">
+  <div className="section-head">
+    <span className="eyebrow">08 — Who it is for</span>
+    <h2>A public beta of a real system. <em>A file custody layer with room to grow.</em></h2>
+  </div>
+  <div className="audience-grid">
+    {home.audiences.map(({ title, copy, label }) => (
+      <div className="audience-card" key={title}>
+        <div className="lab">{label}</div>
+        <h3>{title}</h3>
+        <p>{copy}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* ============================================================
+     09 — PUBLIC BETA VS STAGED ROADMAP
+     ============================================================ */}
+<section id="roadmap" className="section-tight">
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">09 — Public lane vs staged stack</span>
+      <h2>The public build is focused. <em>The deeper ecosystem is intentionally staged.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>CHRON.OS is part of the Hyperion local-first intelligence stack. The public build focuses on archival intelligence; advanced automation, interop, cloud/NAS polish, and full multimodal inference remain staged or internal.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Public beta</span>
+        <span>Internal roadmap</span>
+        <span>No overclaim</span>
+      </div>
+    </div>
+  </div>
+  <div className="roadmap-grid">
+    <div className="roadmap-card public">
+      <div className="cap-head">
+        <h4>Public beta focus</h4>
+        <span className="status-dot live">Shipped lane</span>
+      </div>
+      <ul>
+        {home.roadmap.publicBeta.map((item) => <li key={item}><span className="tick"></span>{item}</li>)}
+      </ul>
+    </div>
+    <div className="roadmap-card staged">
+      <div className="cap-head">
+        <h4>Internal / staged direction</h4>
+        <span className="status-dot gated">Not promised as shipped</span>
+      </div>
+      <ul>
+        {home.roadmap.staged.map((item) => <li key={item}><span className="tick"></span>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================
+     10 — VIDEO LANES
+     ============================================================ */}
+<section id="videos">
+  <div className="section-lead compact">
+    <div className="section-head">
+      <span className="eyebrow">10 — Video package</span>
+      <h2>The site needs motion next. <em>Start with trust, workflow, and scope.</em></h2>
+    </div>
+    <div className="section-copy-card">
+      <p>The first videos should use synthetic demo archives only: no private files, no inflated enterprise claims, and no suggestion that staged interop is already shipped.</p>
+      <div className="copy-chip-row" aria-hidden="true">
+        <span>Synthetic data</span>
+        <span>Caption-first</span>
+        <span>Commercial-safe</span>
+      </div>
+    </div>
+  </div>
+  <div className="video-grid">
+    {home.videoLanes.map(({ title, duration, copy, status }) => (
+      <div className="video-card" key={title}>
+        <div className="video-frame" aria-hidden="true">
+          <span>{duration}</span>
+        </div>
+        <div className="body">
+          <div className="lab">{status}</div>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div className="section-actions">
+    <a className="btn" href={`${releaseLinks.github}/blob/main/docs/VIDEO_PLAN.md`} target="_blank" rel="noopener">Review video briefs</a>
+  </div>
+</section>
+
+{/* ============================================================
+     11 — BETA STATUS
      ============================================================ */}
 <section id="beta">
   <div className="section-lead compact">
     <div className="section-head">
-      <span className="eyebrow">08 — Beta status</span>
-      <h2>Core features are live <em>and improving quickly.</em></h2>
+      <span className="eyebrow">11 — Beta status</span>
+      <h2>Public beta, not alpha. <em>Still staged where it should be.</em></h2>
     </div>
     <div className="section-copy-card">
-      <p>The core archive, file preview, duplicate detection, timeline navigation, dashboard, and relationship views are all working. The instrument works. The archive grows.</p>
-      <p>Advanced media understanding, external cloud tools, and deeper Atlas performance are under active development.</p>
+      <p>The public build focuses on local-first archival intelligence: capture, provenance, context, search, aging signals, and safe archive workflows.</p>
+      <p>Advanced automation, interop, cloud/NAS polish, full multimodal inference, and production OAuth remain staged or internal.</p>
       <div className="copy-chip-row" aria-hidden="true">
         <span>v0.2.2-beta.1</span>
-        <span>Beta channel</span>
+        <span>Local-first preview lane</span>
         <span>Gated providers</span>
       </div>
     </div>

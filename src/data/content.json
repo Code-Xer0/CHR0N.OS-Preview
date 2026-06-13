@@ -6,24 +6,24 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Local-first archival intelligence",
-      "titlePrefix": "Your archive should remember",
-      "titleEmphasis": "why things matter.",
-      "lede": "CHRON.OS is a local-first archival intelligence system for preserving documents, media, provenance, temporal context, and user-weighted meaning — without making the cloud the source of truth.",
+      "eyebrow": "Public Beta / Local-First Preview Lane",
+      "titlePrefix": "Local-first archival intelligence",
+      "titleEmphasis": "for files that need memory.",
+      "lede": "CHRON.OS helps people and teams build archives that remember where files came from, why they matter, and when they need attention — without making the cloud the source of truth.",
       "primaryCta": "Download Windows installer",
       "portableCta": "Portable ZIP",
       "doctrineCta": "Read the principles"
     },
     "pills": [
-      "Runs locally",
-      "Preserves provenance",
-      "Maps meaning over time",
-      "Built for high-context work"
+      "Public beta",
+      "Provenance-first",
+      "Aging signals",
+      "Safe archive workflows"
     ],
     "assurance": [
-      "Public beta",
       "Installer recommended",
-      "Portable no-install path"
+      "Non-destructive by default",
+      "Deeper stack staged"
     ],
     "console": {
       "releaseKicker": "public beta",
@@ -58,20 +58,75 @@
     ],
     "capabilities": [
       {
-        "title": "Archive",
-        "copy": "Preserve originals, metadata, hashes, and paths."
+        "title": "Capture",
+        "copy": "Copy important files into a working archive without mutating originals."
       },
       {
-        "title": "Understand",
-        "copy": "Classify by domain, form, role, and salience."
+        "title": "Provenance",
+        "copy": "Preserve source paths, hashes, sidecar metadata, and intake context."
       },
       {
-        "title": "Navigate",
-        "copy": "Move by timeline, ontology, duplicate, or relation."
+        "title": "Govern",
+        "copy": "Track age, context, search posture, and review-ready archive state."
       },
       {
-        "title": "Remember",
-        "copy": "Keep continuity across long-running work."
+        "title": "Stage",
+        "copy": "Keep automation, retention, and interop behind explicit gates."
+      }
+    ],
+    "audiences": [
+      {
+        "title": "Individuals",
+        "copy": "Recover messy downloads, old documents, scattered project files, research folders, and forgotten archives without losing where they came from.",
+        "label": "Personal archive recovery"
+      },
+      {
+        "title": "Teams",
+        "copy": "Preserve provenance, review aging files, standardize archive rules, and prepare policy-based retention workflows before automation is enabled.",
+        "label": "Operational file custody"
+      },
+      {
+        "title": "Organizations",
+        "copy": "Use CHRON.OS as the archive layer inside a broader local-first Hyperion deployment, with deeper interop lanes staged until policy and trust gates are ready.",
+        "label": "Local-first archive layer"
+      }
+    ],
+    "roadmap": {
+      "publicBeta": [
+        "local archive intake",
+        "provenance-preserving copy workflows",
+        "file and context inspection",
+        "chronological sorting and search-oriented organization",
+        "archive telemetry and aging signals",
+        "safe non-mutating source behavior"
+      ],
+      "staged": [
+        "advanced automation and policy dispatch",
+        "MNEM.OS continuity bridge",
+        "Nest automation interop",
+        "Cerberus telemetry proposals",
+        "cloud, NAS, and production OAuth polish",
+        "full multimodal inference and retention workflows"
+      ]
+    },
+    "videoLanes": [
+      {
+        "title": "Public beta tour",
+        "duration": "90 sec",
+        "copy": "Show the installer lane, local intake, provenance trail, search posture, and beta boundaries using synthetic demo data.",
+        "status": "Brief ready"
+      },
+      {
+        "title": "Safety workflow",
+        "duration": "60 sec",
+        "copy": "Explain the trust model: copy and index first, originals untouched, destructive actions gated by explicit operator policy.",
+        "status": "Trust spot"
+      },
+      {
+        "title": "Archive policy wedge",
+        "duration": "75 sec",
+        "copy": "Frame the individual, team, and organization use cases without claiming enterprise production readiness.",
+        "status": "Commercial-safe"
       }
     ],
     "gallery": [
@@ -251,6 +306,14 @@
           {
             "label": "What it does",
             "href": "#capabilities"
+          },
+          {
+            "label": "Use cases",
+            "href": "#usecases"
+          },
+          {
+            "label": "Videos",
+            "href": "#videos"
           }
         ]
       },
@@ -295,7 +358,7 @@
           },
           {
             "label": "Use Cases",
-            "href": "#system"
+            "href": "#usecases"
           },
           {
             "label": "What's new",

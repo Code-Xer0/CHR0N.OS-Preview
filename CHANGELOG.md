@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- adjusted public site and README posture from early preview language to Public Beta / Local-First Preview Lane
+- added public beta, internal roadmap, and video plan documentation
+- added site sections for audience fit, staged ecosystem boundary, and initial video lanes
+- reinforced non-destructive source behavior and operator/policy approval language
+
 ## v0.2.2-beta.1 - 2026-06-06
 
 Public Windows beta refresh focused on commercial-safe presentation and the latest CHR0N.OS desktop build.
