@@ -1,7 +1,7 @@
 {
   "releaseLinks": {
-    "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows-setup.exe",
-    "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-portable-windows.zip",
+    "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows-setup.exe",
+    "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-portable-windows.zip",
     "github": "https://github.com/Code-Xer0/CHR0N.OS-Preview"
   },
   "home": {
@@ -27,8 +27,8 @@
     ],
     "console": {
       "releaseKicker": "public beta",
-      "releaseTitle": "Windows installer ready",
-      "releaseBody": "Portable ZIP remains available for no-install testing.",
+      "releaseTitle": "0.2.3 media intake beta",
+      "releaseBody": "Installer, MSI, and self-contained portable ZIP are available for Windows.",
       "graphMeta": [
         "128 demo artifacts",
         "42 demo links"
@@ -98,7 +98,10 @@
         "file and context inspection",
         "chronological sorting and search-oriented organization",
         "archive telemetry and aging signals",
-        "safe non-mutating source behavior"
+        "safe non-mutating source behavior",
+        "durable photo, video, and audio intake",
+        "approved watched sources and Quick Intake",
+        "review-only local media context suggestions"
       ],
       "staged": [
         "advanced automation and policy dispatch",
@@ -106,7 +109,9 @@
         "Nest automation interop",
         "Cerberus telemetry proposals",
         "cloud, NAS, and production OAuth polish",
-        "full multimodal inference and retention workflows"
+        "speaker diarization and deeper media models",
+        "production multilingual OCR packs",
+        "unbounded media processing beyond beta resource guards"
       ]
     },
     "videoLanes": [
@@ -221,7 +226,7 @@
           },
           {
             "label": "Operational",
-            "copy": "archivist-system / v0.2.2 · synthetic demo context."
+            "copy": "archivist-system / v0.2.3 · synthetic demo context."
           }
         ]
       },
@@ -265,7 +270,7 @@
       }
     ],
     "release": {
-      "recommendation": "Recommended for most Windows users: one-click installer. Portable ZIP is for no-install testing or users who already have the required runtime pieces.",
+      "recommendation": "Recommended for most Windows users: one-click installer. The portable ZIP is a self-contained no-install option.",
       "matrix": [
         {
           "term": "Windows · 10/11 · x64",

@@ -4,7 +4,7 @@ The first CHRON.OS videos should make the public beta feel real without overexpo
 
 ## Production Rules
 
-- Use synthetic demo data and the public v0.2.2 beta lane.
+- Use synthetic demo data and the public v0.2.3 beta lane.
 - Caption every video.
 - Export 16:9, 9:16, and 1:1 variants where practical.
 - Keep claims to public beta reality: local intake, provenance, search, context, aging signals, and safe workflows.

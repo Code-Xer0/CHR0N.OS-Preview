@@ -471,7 +471,7 @@ export default function HomePage() {
             </button>
           ))}
       </div>
-      <div className="gallery-meta">v0.2.2 · synthetic demo</div>
+      <div className="gallery-meta">v0.2.3 · synthetic demo</div>
     </div>
     <div className="gallery-stage">
       {galleryShots.map((shot, index) => (
@@ -516,7 +516,7 @@ export default function HomePage() {
         <li><span className="tick"></span>Constellation &amp; Atlas relationship views</li>
         <li><span className="tick"></span>Safe non-mutating source behavior</li>
       </ul>
-      <div className="cap-foot">verified · v0.2.2 · synthetic demo dataset</div>
+      <div className="cap-foot">verified · v0.2.3 · synthetic demo dataset</div>
     </div>
 
     <div className="cap dev">
@@ -726,7 +726,7 @@ export default function HomePage() {
       <h2>The public build is focused. <em>The deeper ecosystem is intentionally staged.</em></h2>
     </div>
     <div className="section-copy-card">
-      <p>CHRON.OS is part of the Hyperion local-first intelligence stack. The public build focuses on archival intelligence; advanced automation, interop, cloud/NAS polish, and full multimodal inference remain staged or internal.</p>
+      <p>CHRON.OS is part of the Hyperion local-first intelligence stack. The public build now includes bounded local photo, video, and audio intake; advanced automation, interop, cloud/NAS polish, and deeper media models remain staged or internal.</p>
       <div className="copy-chip-row" aria-hidden="true">
         <span>Public beta</span>
         <span>Internal roadmap</span>
@@ -804,9 +804,9 @@ export default function HomePage() {
     </div>
     <div className="section-copy-card">
       <p>The public build focuses on local-first archival intelligence: capture, provenance, context, search, aging signals, and safe archive workflows.</p>
-      <p>Advanced automation, interop, cloud/NAS polish, full multimodal inference, and production OAuth remain staged or internal.</p>
+      <p>Advanced automation, interop, cloud/NAS polish, speaker diarization, production multilingual OCR packs, and production OAuth remain staged or internal.</p>
       <div className="copy-chip-row" aria-hidden="true">
-        <span>v0.2.2-beta.1</span>
+        <span>v0.2.3-beta.1</span>
         <span>Local-first preview lane</span>
         <span>Gated providers</span>
       </div>
@@ -816,8 +816,8 @@ export default function HomePage() {
   <div className="status-grid">
     <div className="stat-card">
       <div className="lab">Build · current</div>
-      <div className="num">v0.2<span className="small">.2</span></div>
-      <div className="sub">public beta · stable channel</div>
+      <div className="num">v0.2<span className="small">.3</span></div>
+      <div className="sub">public media intake beta</div>
     </div>
     <div className="stat-card">
       <div className="lab">Index · demo</div>

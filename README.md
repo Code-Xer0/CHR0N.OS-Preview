@@ -6,26 +6,26 @@ This repository is the public download, documentation, and portfolio surface. It
 
 ## Download
 
-Current public beta: [v0.2.2-beta.1](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/tag/v0.2.2-beta.1)
+Current public beta: [v0.2.3-beta.1](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/tag/v0.2.3-beta.1)
 
 Recommended for most Windows users:
 
-- [One-click Windows installer](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows-setup.exe)
-- [Installer SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows-setup.exe.sha256.txt)
+- [One-click Windows installer](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows-setup.exe)
+- [Installer SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows-setup.exe.sha256.txt)
 
 Optional package/installer artifact:
 
-- [MSI package](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows.msi)
-- [MSI SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-windows.msi.sha256.txt)
+- [MSI package](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows.msi)
+- [MSI SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows.msi.sha256.txt)
 
 Portable/no-install option for advanced testing:
 
-- [Portable Windows ZIP](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-portable-windows.zip)
-- [Portable ZIP SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.2-beta.1/CHRON.OS-v0.2.2-beta.1-portable-windows.zip.sha256.txt)
+- [Portable Windows ZIP](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-portable-windows.zip)
+- [Portable ZIP SHA-256](https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-portable-windows.zip.sha256.txt)
 
 ## Public Beta Status
 
-CHRON.OS is in public beta. The public build focuses on local-first archival intelligence: file capture, provenance, search, context, aging signals, and safe archive workflows. Advanced automation, interop, cloud/NAS polish, full multimodal inference, and production OAuth remain staged or internal.
+CHRON.OS is in public beta. The public build focuses on local-first archival intelligence: file capture, provenance, search, context, aging signals, safe archive workflows, and bounded local media analysis. Advanced automation, interop, cloud/NAS polish, speaker diarization, and production OAuth remain staged or internal.
 
 Use test or non-critical data first. The product is real, but it is not yet positioned as enterprise production-ready infrastructure.
 
@@ -40,6 +40,10 @@ The public beta includes:
 - chronological sorting and recent-import views
 - search-oriented organization
 - duplicate detection and review surfaces
+- durable photo, video, and audio intake with resumable processing
+- approved watched sources and native Quick Intake drops
+- local OCR, video scene analysis, and review-only visual context suggestions
+- optional multilingual local transcription after an explicit model install
 - safe non-mutating source behavior
 - installer, MSI, portable ZIP, and checksum distribution lanes
 
@@ -70,7 +74,8 @@ For organizations: CHRON.OS can become the archive layer inside a broader local-
 - updater pipeline polish
 - code signing
 - NAS and cloud connector polish
-- full multimodal inference
+- speaker diarization and production multilingual OCR packs
+- deeper unbounded media processing beyond the beta profiles
 - Atlas performance optimization
 - production OAuth setup
 - interop lanes beyond the public archival intelligence build

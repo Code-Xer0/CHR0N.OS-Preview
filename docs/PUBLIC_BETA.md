@@ -8,6 +8,9 @@ CHRON.OS is a public beta for local-first archival intelligence. The public buil
 - copy selected files into a working archive without mutating originals
 - preserve source paths, timestamps, hashes, and sidecar metadata
 - inspect documents, images, video previews, archive metrics, and file context
+- process photos, video, and audio through bounded local analysis profiles
+- approve watched sources or use native Quick Intake without enabling default folders
+- install the multilingual local transcription model explicitly when needed
 - sort and review files by chronology, duplicate posture, recent activity, and relationship surfaces
 - use synthetic demo screens on the public site without exposing private archive content
 - keep cloud and external provider surfaces gated until intentionally configured
@@ -36,13 +39,17 @@ Public beta focus:
 - archive telemetry
 - aging signals
 - safe archive workflows
+- durable local media intake
+- review-only context suggestions
 
 Staged or internal:
 
 - advanced automation
 - production OAuth and provider verification
 - full cloud/NAS polish
-- full multimodal inference
+- speaker diarization
+- production multilingual OCR packs
+- deeper media processing beyond the bounded beta profiles
 - policy dispatch and retention workflows
 - Hyperion interop lanes beyond the archive layer
 

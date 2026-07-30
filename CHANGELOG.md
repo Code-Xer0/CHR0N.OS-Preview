@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.2.3-beta.1 - 2026-07-30
+
+Public Windows beta expanding CHRON.OS into durable, local-first media intake.
+
+Includes:
+
+- resumable photo, video, and audio processing with content-addressed derivatives
+- every-frame lightweight video metrics with bounded scene, OCR, and visual review
+- packaged local OCR and SmolVLM2 visual inference with review-only context suggestions
+- optional multilingual faster-whisper transcription after an explicit model install
+- approved watched sources, native Quick Intake, storage guards, and recovery controls
+- fresh Windows setup EXE, MSI, portable ZIP, notices, and SHA-256 checksums
+
+Known limitations:
+
+- public beta; use test or non-critical data first
+- Windows may warn on unsigned beta builds
+- speaker diarization and production multilingual OCR packs are not included
+- very large media can enter a visible deferred queue under storage and resource guards
+- external providers, cloud/NAS polish, and Hyperion interop remain optional or staged
+
 ## Unreleased
 
 - adjusted public site and README posture from early preview language to Public Beta / Local-First Preview Lane

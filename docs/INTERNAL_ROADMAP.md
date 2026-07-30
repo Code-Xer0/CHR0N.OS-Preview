@@ -13,6 +13,9 @@ The public lane is the Windows archival intelligence beta:
 - search-oriented organization
 - archive telemetry and aging signals
 - non-mutating source behavior
+- durable photo, video, and audio intake
+- approved watched sources and native Quick Intake
+- bounded OCR, scene analysis, and optional local transcription
 - installer, MSI, portable ZIP, and checksum distribution
 
 ## Staged Direction
@@ -27,7 +30,9 @@ The following lanes describe direction, not public-shipped guarantees:
 - environment memory
 - cloud/NAS hardening
 - production OAuth
-- full multimodal inference
+- speaker diarization
+- production multilingual OCR packs
+- deeper media models and unbounded processing profiles
 
 These areas may appear as read-only surfaces, prototypes, proposal language, internal tests, or staged integrations before they become public product features.
 
