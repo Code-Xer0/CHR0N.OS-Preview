@@ -844,6 +844,7 @@ export default function HomePage() {
       <p>Point CHRON.OS at a folder and let it begin organizing your documents, media, research, and projects into a connected archive you can explore and search over time.</p>
       <div className="cta-row">
         <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.hero.primaryCta}</a>
+        <a className="btn" href={releaseLinks.msi} target="_blank" rel="noopener">{home.release.msiCta}</a>
         <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.hero.portableCta}</a>
         <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">{home.release.githubCta}</a>
       </div>
@@ -864,6 +865,7 @@ export default function HomePage() {
       </div>
       <div className="release-actions">
         <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.release.installerCta}</a>
+        <a className="btn" href={releaseLinks.msi} target="_blank" rel="noopener">{home.release.msiCta}</a>
         <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.release.portableCta}</a>
       </div>
     </div>

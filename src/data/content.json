@@ -1,6 +1,7 @@
 {
   "releaseLinks": {
     "installer": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows-setup.exe",
+    "msi": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-windows.msi",
     "portable": "https://github.com/Code-Xer0/CHR0N.OS-Preview/releases/download/v0.2.3-beta.1/CHRON.OS-v0.2.3-beta.1-portable-windows.zip",
     "github": "https://github.com/Code-Xer0/CHR0N.OS-Preview"
   },
@@ -270,11 +271,15 @@
       }
     ],
     "release": {
-      "recommendation": "Recommended for most Windows users: one-click installer. The portable ZIP is a self-contained no-install option.",
+      "recommendation": "Recommended for most Windows users: one-click installer. MSI and self-contained portable options are also available.",
       "matrix": [
         {
           "term": "Windows · 10/11 · x64",
           "value": ".exe"
+        },
+        {
+          "term": "Windows Installer package",
+          "value": ".msi"
         },
         {
           "term": "Portable Windows bundle",
@@ -286,6 +291,7 @@
         }
       ],
       "installerCta": "Installer",
+      "msiCta": "MSI",
       "portableCta": "Portable ZIP",
       "githubCta": "View on GitHub"
     }
@@ -349,6 +355,11 @@
           {
             "label": "Windows installer",
             "href": "installer",
+            "external": true
+          },
+          {
+            "label": "Windows MSI",
+            "href": "msi",
             "external": true
           },
           {
