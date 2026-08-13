@@ -1,911 +1,315 @@
-
 import { useEffect, useState } from 'react';
-import '../index.css';
 import { useTheme } from '../context/ThemeContext';
 import siteContent from '../data/content.json';
+import './home-revamp.css';
 
 const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
-const { releaseLinks, home, footer } = siteContent;
-
-const chronLogo = asset('chronos-logo-horizontal.png');
-const chronIcon = asset('chronos-icon.png');
+const { releaseLinks, home } = siteContent;
 const galleryShots = home.gallery.map((shot) => ({ ...shot, src: asset(shot.asset) }));
-const hrefFor = (href) => releaseLinks[href] || href;
+
+const workflow = [
+  {
+    number: '01',
+    title: 'Bring in a working copy',
+    copy: 'Stage documents and media into local custody while the originals stay exactly where they are.',
+  },
+  {
+    number: '02',
+    title: 'Read the evidence',
+    copy: 'Capture hashes, metadata, dates, media posture, and source context in inspectable sidecars.',
+  },
+  {
+    number: '03',
+    title: 'Find the shape',
+    copy: 'Move through the archive by chronology, search, relationships, and operator-weighted meaning.',
+  },
+  {
+    number: '04',
+    title: 'Review before action',
+    copy: 'Corrections, suggestions, automation, and retention stay visible and gated before they can run.',
+  },
+];
+
+const currentBuild = [
+  'Local archive and media intake',
+  'Provenance-preserving working copies',
+  'Timeline, search, and relationship views',
+  'Durable queues and approved watched sources',
+  'Explicit parser and local-engine posture',
+  'Review-only context suggestions',
+];
+
+const betaBoundaries = [
+  'Use test or non-critical data first',
+  'Windows may warn on unsigned beta builds',
+  'Optional engines require local models or runtimes',
+  'Cloud, NAS, OAuth, and deeper interop remain staged',
+  'No autonomous delete, move, or retention flows',
+];
 
 export default function HomePage() {
   const { isLightMode, toggleTheme } = useTheme();
   const [activeShot, setActiveShot] = useState(0);
 
   useEffect(() => {
-    
-  // UTC clock
-  (function () {
-    function tick() {
-      const d = new Date();
-      const z = n => String(n).padStart(2, '0');
-      const el = document.getElementById('clock');
-      if (el) el.textContent = z(d.getUTCHours()) + ':' + z(d.getUTCMinutes()) + ':' + z(d.getUTCSeconds());
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-
-  // Animated star field
-  (function () {
-    const c = document.getElementById('stars');
-    if (!c) return;
-    const ctx = c.getContext('2d');
-    let stars = [];
-
-    function themeColors() {
-      const source = document.querySelector('.theme-shell') || document.documentElement;
-      const styles = window.getComputedStyle(source);
-      return {
-        accent: styles.getPropertyValue('--cyan').trim() || '#00D9FF',
-        star: styles.getPropertyValue('--ice').trim() || '#E6F0F7',
-      };
-    }
-
-    function resize() {
-      c.width = window.innerWidth * window.devicePixelRatio;
-      c.height = window.innerHeight * window.devicePixelRatio;
-      c.style.width = window.innerWidth + 'px';
-      c.style.height = window.innerHeight + 'px';
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      stars = [];
-      const colors = themeColors();
-      const count = Math.floor((window.innerWidth * window.innerHeight) / 9000);
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          r: Math.random() * 1.1 + 0.2,
-          a: Math.random() * 0.6 + 0.15,
-          tw: Math.random() * 0.02 + 0.005,
-          p: Math.random() * Math.PI * 2,
-          c: Math.random() > 0.85 ? colors.accent : colors.star,
-        });
-      }
-    }
-
-    function draw(t) {
-      ctx.clearRect(0, 0, c.width, c.height);
-      for (const s of stars) {
-        const alpha = s.a * (0.55 + 0.45 * Math.sin(t * s.tw + s.p));
-        ctx.beginPath();
-        ctx.fillStyle = s.c;
-        ctx.globalAlpha = alpha;
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    }
-
-    window.addEventListener('resize', resize);
-    const shell = document.querySelector('.theme-shell');
-    if (shell) {
-      new MutationObserver(resize).observe(shell, { attributes: true, attributeFilter: ['class'] });
-    }
-    resize();
-    requestAnimationFrame(draw);
-  })();
-
-  // Atlas SVG — procedurally generated nodes, rings, and inheritance lines
-  (function () {
-    const nodesG = document.getElementById('atlas-nodes');
-    const linesG = document.getElementById('atlas-lines');
-    const ringsG = document.getElementById('atlas-rings');
-    if (!nodesG) return;
-
-    const ns = 'http://www.w3.org/2000/svg';
-    const clusters = [
-      { x: 540, y: 240, r: 130, n: 70, c: '#00D9FF' },
-      { x: 820, y: 320, r: 100, n: 50, c: '#7BA7C9' },
-      { x: 320, y: 380, r:  90, n: 35, c: '#A6C5DC' },
-      { x: 980, y: 170, r:  70, n: 25, c: '#00D9FF' },
-      { x: 160, y: 180, r:  60, n: 18, c: '#5E8CB7' },
-      { x: 900, y: 470, r:  60, n: 22, c: '#3D6BA1' },
-      { x: 420, y: 120, r:  50, n: 15, c: '#A6C5DC' },
-    ];
-
-    const allNodes = [];
-    clusters.forEach(cl => {
-      const ring = document.createElementNS(ns, 'circle');
-      ring.setAttribute('cx', cl.x);
-      ring.setAttribute('cy', cl.y);
-      ring.setAttribute('r', cl.r);
-      ringsG.appendChild(ring);
-
-      for (let i = 0; i < cl.n; i++) {
-        const ang = Math.random() * Math.PI * 2;
-        const rad = Math.pow(Math.random(), 0.7) * cl.r;
-        const x = cl.x + Math.cos(ang) * rad;
-        const y = cl.y + Math.sin(ang) * rad;
-        const isMain = Math.random() > 0.6;
-        const r = isMain ? Math.random() * 2.5 + 1.4 : Math.random() * 1 + 0.4;
-        const dot = document.createElementNS(ns, 'circle');
-        dot.setAttribute('cx', x);
-        dot.setAttribute('cy', y);
-        dot.setAttribute('r', r);
-        const color = Math.random() > 0.7 ? '#00D9FF' : cl.c;
-        dot.setAttribute('fill', color);
-        dot.setAttribute('opacity', isMain ? 0.85 : 0.5);
-        if (isMain && color === '#00D9FF') dot.setAttribute('filter', 'url(#glow)');
-        nodesG.appendChild(dot);
-        if (isMain) allNodes.push({ x, y });
-      }
-    });
-
-    for (let i = 0; i < 24; i++) {
-      const a = allNodes[Math.floor(Math.random() * allNodes.length)];
-      const b = allNodes[Math.floor(Math.random() * allNodes.length)];
-      if (!a || !b) continue;
-      const dx = a.x - b.x, dy = a.y - b.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 200 || d > 700) continue;
-      const ln = document.createElementNS(ns, 'path');
-      ln.setAttribute('d', `M${a.x} ${a.y} L${b.x} ${b.y}`);
-      linesG.appendChild(ln);
-    }
-  })();
-
-  }, []);
-
-  useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveShot((current) => (current + 1) % galleryShots.length);
-    }, 6000);
+    }, 7000);
     return () => window.clearInterval(timer);
   }, []);
 
+  const selectedShot = galleryShots[activeShot];
+
   return (
-    <>
-      
+    <div className="chron-home" id="top">
+      <div className="chron-ambient" aria-hidden="true" />
 
-{/* Background field + star canvas */}
-<div className="field"></div>
-<canvas id="stars"></canvas>
-
-{/* Top utility bar */}
-<div className="topbar">
-  <div className="wrap topbar-inner">
-    <span className="live">LOCAL NODE <em>INTEGRITY OK</em></span>
-    <span className="topbar-segment"><strong>UTC</strong><em id="clock">00:00:00</em></span>
-    <span className="topbar-segment topbar-hide-sm"><strong>CANONICAL</strong><em>ON DEVICE</em></span>
-    <span className="topbar-segment topbar-hide-md"><strong>BUILT BY</strong><em>HYPERION INDUSTRIES</em></span>
-  </div>
-</div>
-
-{/* Navigation */}
-<header className="nav">
-  <div className="wrap nav-inner">
-    <a className="brand" href="#top">
-      <img src={chronLogo} alt="CHRON.OS" />
-    </a>
-    <nav className="nav-links">
-      <a href="#system">System</a>
-      <a href="#archivist">Archivist</a>
-      <a href="#atlas">Atlas</a>
-      <a href="#usecases">Use Cases</a>
-      <a href="#videos">Videos</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#beta">Beta</a>
-    </nav>
-    <div className="nav-cta">
-      <button className="theme-toggle" type="button" onClick={toggleTheme} title={isLightMode ? 'Switch to dark mode' : 'Switch to light mode'} aria-label="Toggle color theme">
-        {isLightMode ? '☾' : '☼'}
-      </button>
-      <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">View on GitHub</a>
-      <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">Download installer</a>
-    </div>
-  </div>
-</header>
-
-<main className="wrap" id="top">
-
-{/* ============================================================
-     HERO
-     ============================================================ */}
-<section className="hero">
-  <div className="hero-grid">
-    <div className="hero-copy">
-      <span className="eyebrow">{home.hero.eyebrow}</span>
-      <h1>{home.hero.titlePrefix} <em>{home.hero.titleEmphasis}</em></h1>
-      <p className="lede">{home.hero.lede}</p>
-      <div className="pill-row">
-        {home.pills.map((pill) => <span className="pill" key={pill}>{pill}</span>)}
-      </div>
-      <div className="cta-row">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.hero.primaryCta}</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.hero.portableCta}</a>
-        <a className="btn" href="#doctrine">{home.hero.doctrineCta}</a>
-      </div>
-      <div className="hero-assurance">
-        {home.assurance.map((item) => <span key={item}>{item}</span>)}
-      </div>
-    </div>
-
-    <div className="hero-console" aria-label="CHRON.OS local ontology console preview">
-      <div className="console-bar">
-        <span>ontology console</span>
-        <strong>local-0 / ready</strong>
-      </div>
-      <div className="console-main">
-        <div className="orbit hero-orbit" aria-hidden="true">
-          <div className="corner tl"><span>SYS//</span> field active</div>
-          <div className="corner tr">epoch <span>2026.05.05</span></div>
-          <div className="corner bl">node <span>local-0</span></div>
-          <div className="corner br">integrity <span>OK</span></div>
-          <div className="crosshair"></div>
-          <div className="crosshair h"></div>
-          <div className="ring"></div>
-          <div className="ring r2"></div>
-          <div className="ring r3"></div>
-          <div className="ring r4"></div>
-          <div className="spinner">
-            <div className="node" style={{ top: 0, left: '50%', transform: 'translate(-50%,-50%)' }}></div>
-            <div className="node dim" style={{ top: '50%', left: '100%', transform: 'translate(-50%,-50%)' }}></div>
-          </div>
-          <div className="spinner s2">
-            <div className="node" style={{ top: '8%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
-            <div className="node dim" style={{ top: '50%', left: '8%', transform: 'translate(-50%,-50%)' }}></div>
-            <div className="node dim" style={{ top: '92%', left: '50%', transform: 'translate(-50%,-50%)' }}></div>
-          </div>
-          <div className="spinner s3">
-            <div className="node dim" style={{ top: '18%', left: '18%', transform: 'translate(-50%,-50%)' }}></div>
-            <div className="node" style={{ top: '82%', left: '82%', transform: 'translate(-50%,-50%)' }}></div>
-          </div>
-          <img className="mark" src={chronIcon} alt="" />
+      <header className="chron-nav">
+        <a className="chron-brand" href="#top" aria-label="CHR0N.OS home">
+          <img src={asset('chronos-logo-horizontal.png')} alt="CHR0N.OS" />
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#product">Product</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#trust">Trust</a>
+          <a href="#videos">Videos</a>
+          <a href="#beta">Beta</a>
+        </nav>
+        <div className="chron-nav-actions">
+          <button className="chron-theme" type="button" onClick={toggleTheme} aria-label="Toggle color theme">
+            {isLightMode ? 'Dark' : 'Light'}
+          </button>
+          <a className="chron-button chron-button-primary" href={releaseLinks.installer} target="_blank" rel="noopener">
+            Download for Windows
+          </a>
         </div>
+      </header>
 
-        <div className="console-rail">
-          <div className="console-panel release-readout">
-            <div className="panel-kicker">{home.console.releaseKicker}</div>
-            <strong>{home.console.releaseTitle}</strong>
-            <span>{home.console.releaseBody}</span>
-          </div>
-          <div className="console-panel graph-readout" aria-hidden="true">
-            <svg viewBox="0 0 240 132">
-              <path d="M25 92 C56 42 82 55 104 73 S151 108 212 32" />
-              <path d="M38 38 C76 78 122 20 158 72 S196 88 224 62" />
-              <circle cx="25" cy="92" r="5" />
-              <circle cx="78" cy="53" r="3" />
-              <circle cx="104" cy="73" r="4" />
-              <circle cx="158" cy="72" r="4" />
-              <circle cx="212" cy="32" r="5" />
-              <circle cx="224" cy="62" r="3" />
-            </svg>
-            <div className="graph-meta">
-              {home.console.graphMeta.map((item) => <span key={item}>{item}</span>)}
+      <main>
+        <section className="chron-hero" aria-labelledby="hero-title">
+          <div className="chron-hero-copy">
+            <div className="chron-kicker"><span /> Public beta · v0.2.3</div>
+            <h1 id="hero-title">Your files.<br />Their history.<br /><em>Still yours.</em></h1>
+            <p>
+              CHR0N.OS is a local-first archive for the documents and media that need more than a folder.
+              Preserve where they came from, understand how they connect, and keep action under your control.
+            </p>
+            <div className="chron-hero-actions">
+              <a className="chron-button chron-button-primary chron-button-large" href={releaseLinks.installer} target="_blank" rel="noopener">
+                Download the public beta <span>↗</span>
+              </a>
+              <a className="chron-button chron-button-ghost chron-button-large" href="#product">See the product</a>
+            </div>
+            <div className="chron-assurance" aria-label="Product assurances">
+              <span>No account required</span>
+              <span>Originals stay put</span>
+              <span>Cloud is optional</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="pipeline-readout">
-        {home.pipeline.map(({ label, description }, index) => (
-          <div className="pipeline-step" key={label}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <strong>{label}</strong>
-            <p>{description}</p>
+
+          <div className="chron-hero-product">
+            <div className="chron-orbit chron-orbit-one" aria-hidden="true" />
+            <div className="chron-orbit chron-orbit-two" aria-hidden="true" />
+            <div className="chron-product-window">
+              <div className="chron-window-bar">
+                <div className="chron-window-dots"><span /><span /><span /></div>
+                <div className="chron-window-label">LOCAL ARCHIVE · EMPTY DEMO WORKSPACE</div>
+                <div className="chron-window-state">LIVE BUILD</div>
+              </div>
+              <img src={asset('chronos-023-overview.png')} alt="CHR0N.OS v0.2.3 Overview in an isolated empty workspace" />
+            </div>
+            <div className="chron-float-card chron-float-top">
+              <span>Build posture</span>
+              <strong>Local-first</strong>
+            </div>
+            <div className="chron-float-card chron-float-bottom">
+              <span>Source policy</span>
+              <strong>Originals untouched</strong>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
+        </section>
 
-  <div className="hero-capability-strip">
-    {home.capabilities.map(({ title, copy }) => (
-      <div className="hero-capability" key={title}>
-        <strong>{title}</strong>
-        <span>{copy}</span>
-      </div>
-    ))}
-  </div>
-</section>
+        <section className="chron-proof" aria-label="Product position">
+          <div><span>01</span><strong>Copy-first custody</strong><p>Work from archive copies and inspectable sidecars.</p></div>
+          <div><span>02</span><strong>Evidence before inference</strong><p>Keep source facts distinct from suggestions and meaning.</p></div>
+          <div><span>03</span><strong>Operator before automation</strong><p>Review, policy, and approval remain part of the workflow.</p></div>
+        </section>
 
-{/* ============================================================
-     01 — SYSTEM OVERVIEW
-     ============================================================ */}
-<section id="system">
-  <div className="section-lead">
-    <div className="section-head">
-      <span className="eyebrow">01 — System overview</span>
-      <h2>Most folders become digital junk drawers over time. <em>CHRON.OS turns that into file memory.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>CHRON.OS is the public beta lane for a larger local-first archive and memory ecosystem. The current build focuses on file capture, provenance, search, context, aging signals, and safe archive workflows while deeper automation and interop stay staged.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>File lifecycle</span>
-        <span>Provenance</span>
-        <span>Search posture</span>
-        <span>Policy staging</span>
-      </div>
-    </div>
-  </div>
-
-  <div className="pillars">
-    <div className="pillar">
-      <div className="pillar-num">— 01</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <rect x="3" y="5" width="18" height="14" rx="1"/>
-        <path d="M3 9h18M8 5v14"/>
-      </svg>
-      <h3>Capture</h3>
-      <p>Copy important files into a working archive while preserving source context and original custody.</p>
-    </div>
-    <div className="pillar">
-      <div className="pillar-num">— 02</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
-        <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
-      </svg>
-      <h3>Inspect</h3>
-      <p>Read file shape, metadata, preview state, context, chronology, and early meaning signals.</p>
-    </div>
-    <div className="pillar">
-      <div className="pillar-num">— 03</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M3 12h6l3-6 3 12 3-6h3"/>
-      </svg>
-      <h3>Organize</h3>
-      <p>Move through files by chronology, search state, duplicate posture, relationships, and trace paths.</p>
-    </div>
-    <div className="pillar">
-      <div className="pillar-num">— 04</div>
-      <svg className="pillar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 7v5l3 2"/>
-      </svg>
-      <h3>Review</h3>
-      <p>Surface aging files, archive telemetry, and policy-ready decisions before any automation runs.</p>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     02 — WHAT IT PRESERVES (provenance chain)
-     ============================================================ */}
-<section id="preserves" className="section-tight">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">02 — What it preserves</span>
-      <h2>Source → hash → metadata → meaning → trace.</h2>
-    </div>
-    <div className="section-copy-card">
-      <p>CHRON.OS keeps more than the file itself. It preserves the trail around it — where it came from, when it changed, and how it connects to the rest of your archive.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>Source custody</span>
-        <span>Sidecars</span>
-        <span>Continuity</span>
-      </div>
-    </div>
-  </div>
-
-  <div className="chain">
-    <div className="chain-step">
-      <div className="label">01 · Source</div>
-      <div className="name">Original</div>
-      <div className="desc">C:\DemoArchive\source.pdf — untouched. Path, drive, and intake context preserved.</div>
-    </div>
-    <div className="chain-step">
-      <div className="label">02 · Hash</div>
-      <div className="name">SHA-256</div>
-      <div className="desc">Cryptographic anchor. Detects duplicates, drift, and silent edits.</div>
-    </div>
-    <div className="chain-step">
-      <div className="label">03 · Metadata</div>
-      <div className="name">Sidecar</div>
-      <div className="desc">MIME, dimensions, timestamps, EXIF, embedded fields — captured once, kept locally.</div>
-    </div>
-    <div className="chain-step">
-      <div className="label">04 · Meaning</div>
-      <div className="name">Context</div>
-      <div className="desc">Domain, form, relationships, and meaning you can adjust over time.</div>
-    </div>
-    <div className="chain-step">
-      <div className="label">05 · Trace</div>
-      <div className="name">Continuity</div>
-      <div className="desc">How files connect across projects, timelines, and decisions.</div>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     03 — THE ARCHIVIST
-     ============================================================ */}
-<section id="archivist">
-  <div className="section-head">
-    <span className="eyebrow">03 — The Archivist subsystem</span>
-    <h2>Not every file matters equally. Archivist helps surface the ones that do.</h2>
-  </div>
-
-  <div className="archivist">
-    <div>
-      <span className="eyebrow">subsystem // archivist</span>
-      <h3>Archivist helps surface the files that <em>actually matter.</em></h3>
-      <p>Some files are just files. Others are the ones tied to a decision, a breakthrough, a revision, an investigation, or a turning point in a project. Archivist helps CHRON.OS identify which is which — and lets you adjust that weighting as your understanding evolves.</p>
-      <div className="doctrine" id="doctrine">
-        "A datum is not significant merely because it repeats. A datum is significant when it changes future interpretation."
-        <span className="src">— CHRON.OS Doctrine, §II</span>
-      </div>
-    </div>
-
-    <div className="archivist-shot">
-      <img src={asset('extracted_4.png')} alt="Archivist subsystem — chat surface with capabilities and indexed-archive context" />
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     04 — PRODUCT GALLERY (See it operate)
-     ============================================================ */}
-<section id="atlas">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">04 — See it operate</span>
-      <h2>See how the archive <em>works in practice.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>These screens use synthetic demo data. Browse relationships between files, trace project history, inspect artifacts, and explore how CHRON.OS organizes information over time without exposing a private archive.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>Atlas</span>
-        <span>Constellation</span>
-        <span>Trace</span>
-        <span>Files</span>
-      </div>
-    </div>
-  </div>
-
-    <div className="gallery" id="gallery">
-      <div className="gallery-head">
-        <div className="gallery-tabs">
-          {galleryShots.map((shot, index) => (
-            <button
-              key={shot.tab}
-              className={activeShot === index ? 'active' : ''}
-              onClick={() => setActiveShot(index)}
-              type="button"
-            >
-              {shot.tab}
-            </button>
-          ))}
-      </div>
-      <div className="gallery-meta">v0.2.3 · synthetic demo</div>
-    </div>
-    <div className="gallery-stage">
-      {galleryShots.map((shot, index) => (
-        <img key={shot.tab} className={activeShot === index ? 'active' : ''} src={shot.src} alt={shot.alt} />
-      ))}
-    </div>
-    <div className="gallery-foot">
-      {galleryShots[activeShot].panels.map((panel) => (
-        <div className="gf active" key={panel.label}>
-          <div className="lab">{panel.label}</div>
-          <p>{panel.copy}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     05 — OPERATIONAL STATE (Capabilities)
-     ============================================================ */}
-<section id="capabilities">
-  <div className="section-head">
-    <span className="eyebrow">05 — What it can do today</span>
-    <h2>What's working now, what's in progress, and what's <em>still being built.</em></h2>
-  </div>
-
-  <div className="cap-grid">
-    <div className="cap now">
-      <div className="cap-head">
-        <h4>Working now</h4>
-        <span className="status-dot live">Operational</span>
-      </div>
-      <ul>
-        <li><span className="tick"></span>Local archive intake &amp; File Explorer previews</li>
-        <li><span className="tick"></span>Provenance-preserving copy workflows</li>
-        <li><span className="tick"></span>PDF, text, DOCX, image, and video preview support</li>
-        <li><span className="tick"></span>Duplicate detection &amp; full duplicate scan</li>
-        <li><span className="tick"></span>Chronological sorting &amp; recent-import views</li>
-        <li><span className="tick"></span>Dashboard metrics &amp; archive insights</li>
-        <li><span className="tick"></span>File/context inspection &amp; search-oriented organization</li>
-        <li><span className="tick"></span>Aging signals &amp; review-ready archive telemetry</li>
-        <li><span className="tick"></span>Constellation &amp; Atlas relationship views</li>
-        <li><span className="tick"></span>Safe non-mutating source behavior</li>
-      </ul>
-      <div className="cap-foot">verified · v0.2.3 · synthetic demo dataset</div>
-    </div>
-
-    <div className="cap dev">
-      <div className="cap-head">
-        <h4>In active development</h4>
-        <span className="status-dot dev">Production track</span>
-      </div>
-      <ul>
-        <li><span className="tick"></span>Advanced automation and policy dispatch</li>
-        <li><span className="tick"></span>MNEM.OS continuity bridge</li>
-        <li><span className="tick"></span>Nest automation interop</li>
-        <li><span className="tick"></span>Cerberus telemetry proposals</li>
-        <li><span className="tick"></span>Meaning Lab — user-guided ontology refinement</li>
-        <li><span className="tick"></span>Cloud, NAS, and production OAuth polish</li>
-        <li><span className="tick"></span>Full multimodal inference and retention workflows</li>
-      </ul>
-      <div className="cap-foot">staged lanes · not all public build features</div>
-    </div>
-
-    <div className="cap gated">
-      <div className="cap-head">
-        <h4>What's still being built</h4>
-        <span className="status-dot gated">Gated</span>
-      </div>
-      <ul>
-        <li><span className="tick"></span>Production OAuth / Google Drive sync without provider verification</li>
-        <li><span className="tick"></span>Full frame-by-frame video understanding or autonomous interpretation</li>
-        <li><span className="tick"></span>Replacement of human review for legal, medical, financial, or safety-critical interpretation</li>
-        <li><span className="tick"></span>Mutation of original source files — by design, never</li>
-        <li><span className="tick"></span>Delete, move, retention, or automation flows without explicit policy or operator approval</li>
-        <li><span className="tick"></span>Enterprise-grade security claims beyond what is implemented</li>
-      </ul>
-      <div className="cap-foot">policy · what we will not pretend</div>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     06 — TRUST BY CONSTRUCTION (settings screens)
-     ============================================================ */}
-<section id="trust-strip" style={{ paddingTop: 0 }}>
-  <div className="section-head">
-    <span className="eyebrow">06 — Privacy and control built in</span>
-    <h2>Your files stay under your control — <em>by default, not by request.</em></h2>
-  </div>
-  <div className="trust-strip">
-    <div className="trust-shot">
-      <div className="img"><img src={asset('extracted_12.png')} alt="Security vault — passphrase, auto-lock, Windows Hello, authenticator, hardware key" /></div>
-      <div className="body">
-        <div className="lab">Security vault</div>
-        <h4>Encryption is your call</h4>
-        <p>Passphrase encrypts settings, sidecars, uploads, and the local search index. Local presence factors register here.</p>
-      </div>
-    </div>
-    <div className="trust-shot">
-      <div className="img"><img src={asset('extracted_13.png')} alt="Cloud provider settings — Claude, OpenAI, Google, Mistral, plus local Ollama and edge OpenAI-compatible endpoints" /></div>
-      <div className="body">
-        <div className="lab">Choose your AI tools</div>
-        <h4>Cloud, local, or entirely on-device</h4>
-        <p>Claude · OpenAI · Google · Mistral, plus local Ollama and any OpenAI-compatible LAN endpoint. Prefer-edge routes inference off-cloud.</p>
-      </div>
-    </div>
-    <div className="trust-shot">
-      <div className="img"><img src={asset('extracted_14.png')} alt="Local source browser — preview originals before copying into the archive" /></div>
-      <div className="body">
-        <div className="lab">Local source browser</div>
-        <h4>Your original files are never touched</h4>
-        <p>Browse, preview, and bring files into CHRON.OS without moving or modifying the originals.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     07 — LOCAL-FIRST CUSTODY (Privacy)
-     ============================================================ */}
-<section id="privacy">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">07 — Your files stay with you</span>
-      <h2>Your computer stays in control. <em>Not a cloud account.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>CHRON.OS is designed so your archive starts with you — not a cloud account. Your original files stay untouched on your machine unless you choose otherwise. Cloud tools and external services are optional add-ons, not requirements.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>Local-first</span>
-        <span>Opt-in cloud</span>
-        <span>Originals untouched</span>
-      </div>
-    </div>
-  </div>
-
-  <div className="privacy">
-    <div className="trust-list">
-      <div className="item">
-        <div className="num">// 01</div>
-        <div className="body"><strong>Local-first by default</strong>
-          <p>Everything starts on your device. No sign-up, no cloud account required to get started.</p></div>
-        <div className="stat">Default</div>
-      </div>
-      <div className="item">
-        <div className="num">// 02</div>
-        <div className="body"><strong>Original files untouched</strong>
-          <p>CHRON.OS works with copies. It never renames, moves, or modifies your original files.</p></div>
-        <div className="stat">Enforced</div>
-      </div>
-      <div className="item">
-        <div className="num">// 03</div>
-        <div className="body"><strong>Provenance preserved</strong>
-          <p>Where a file came from, when it changed, and how it got there — all kept with the file.</p></div>
-        <div className="stat">Always on</div>
-      </div>
-      <div className="item">
-        <div className="num">// 04</div>
-        <div className="body"><strong>No cloud account required</strong>
-          <p>The full experience works without an internet connection. Cloud tools are optional and always opt-in.</p></div>
-        <div className="stat">Offline-ok</div>
-      </div>
-      <div className="item">
-        <div className="num">// 05</div>
-        <div className="body"><strong>Automation stays gated</strong>
-          <p>CHRON.OS begins non-destructively. Delete, move, retention, and automation flows require explicit policy or operator approval.</p></div>
-        <div className="stat">Approval</div>
-      </div>
-      <div className="item gated">
-        <div className="num">// 06</div>
-        <div className="body"><strong>External providers gated</strong>
-          <p>Cloud sync, OAuth, and third-party integrations are off by default. You enable them only if and when you need them.</p></div>
-        <div className="stat">Gated</div>
-      </div>
-    </div>
-
-    {/* Trust topology diagram */}
-    <div className="topo">
-      <h5>Trust topology</h5>
-      <svg viewBox="0 0 480 360" fill="none">
-        <defs>
-          <linearGradient id="grad-edge" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#00D9FF" stopOpacity=".0"/>
-            <stop offset="100%" stopColor="#00D9FF" stopOpacity=".7"/>
-          </linearGradient>
-        </defs>
-
-        {/* machine boundary */}
-        <rect x="20" y="60" width="280" height="280" rx="6" stroke="#00D9FF" strokeOpacity=".5" strokeDasharray="2 4"/>
-        <text x="32" y="50" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing=".18em" fill="#00D9FF">YOUR MACHINE · CANONICAL</text>
-
-        {/* nodes inside machine */}
-        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#E6F0F7">
-          <g><rect x="48" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="98" y="127" textAnchor="middle">Sources</text></g>
-          <g><rect x="170" y="100" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="220" y="127" textAnchor="middle">Index</text></g>
-          <g><rect x="48" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="98" y="207" textAnchor="middle">Metadata</text></g>
-          <g><rect x="170" y="180" width="100" height="44" rx="3" fill="#0d1c40" stroke="#00D9FF" strokeOpacity=".7"/><text x="220" y="207" textAnchor="middle" fill="#00D9FF">Archivist</text></g>
-          <g><rect x="48" y="260" width="222" height="44" rx="3" fill="#0d1c40" stroke="#E6F0F7" strokeOpacity=".25"/><text x="159" y="287" textAnchor="middle">Atlas · Constellation · Ontology</text></g>
-        </g>
-
-        {/* internal edges */}
-        <g stroke="#E6F0F7" strokeOpacity=".25">
-          <path d="M148 122 L170 122"/>
-          <path d="M98 144 L98 180"/>
-          <path d="M220 144 L220 180"/>
-          <path d="M98 224 L98 260"/>
-          <path d="M220 224 L220 260"/>
-        </g>
-
-        {/* gated bridge to external */}
-        <path d="M300 180 L380 180" stroke="url(#grad-edge)" strokeWidth="1.2" strokeDasharray="3 4"/>
-        <text x="340" y="172" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="9" letterSpacing=".18em" fill="#00D9FF" fillOpacity=".7">GATED</text>
-
-        {/* external node */}
-        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#E6F0F7" fillOpacity=".55">
-          <rect x="380" y="158" width="80" height="44" rx="3" fill="transparent" stroke="#E6F0F7" strokeOpacity=".18" strokeDasharray="3 3"/>
-          <text x="420" y="178" textAnchor="middle">External</text>
-          <text x="420" y="192" textAnchor="middle" fontSize="9" fillOpacity=".5">opt-in</text>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     08 — COMMERCIAL WEDGE
-     ============================================================ */}
-<section id="usecases">
-  <div className="section-head">
-    <span className="eyebrow">08 — Who it is for</span>
-    <h2>A public beta of a real system. <em>A file custody layer with room to grow.</em></h2>
-  </div>
-  <div className="audience-grid">
-    {home.audiences.map(({ title, copy, label }) => (
-      <div className="audience-card" key={title}>
-        <div className="lab">{label}</div>
-        <h3>{title}</h3>
-        <p>{copy}</p>
-      </div>
-    ))}
-  </div>
-</section>
-
-{/* ============================================================
-     09 — PUBLIC BETA VS STAGED ROADMAP
-     ============================================================ */}
-<section id="roadmap" className="section-tight">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">09 — Public lane vs staged stack</span>
-      <h2>The public build is focused. <em>The deeper ecosystem is intentionally staged.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>CHRON.OS is part of the Hyperion local-first intelligence stack. The public build now includes bounded local photo, video, and audio intake; advanced automation, interop, cloud/NAS polish, and deeper media models remain staged or internal.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>Public beta</span>
-        <span>Internal roadmap</span>
-        <span>No overclaim</span>
-      </div>
-    </div>
-  </div>
-  <div className="roadmap-grid">
-    <div className="roadmap-card public">
-      <div className="cap-head">
-        <h4>Public beta focus</h4>
-        <span className="status-dot live">Shipped lane</span>
-      </div>
-      <ul>
-        {home.roadmap.publicBeta.map((item) => <li key={item}><span className="tick"></span>{item}</li>)}
-      </ul>
-    </div>
-    <div className="roadmap-card staged">
-      <div className="cap-head">
-        <h4>Internal / staged direction</h4>
-        <span className="status-dot gated">Not promised as shipped</span>
-      </div>
-      <ul>
-        {home.roadmap.staged.map((item) => <li key={item}><span className="tick"></span>{item}</li>)}
-      </ul>
-    </div>
-  </div>
-</section>
-
-{/* ============================================================
-     10 — VIDEO LANES
-     ============================================================ */}
-<section id="videos">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">10 — Video package</span>
-      <h2>The site needs motion next. <em>Start with trust, workflow, and scope.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>The first videos should use synthetic demo archives only: no private files, no inflated enterprise claims, and no suggestion that staged interop is already shipped.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>Synthetic data</span>
-        <span>Caption-first</span>
-        <span>Commercial-safe</span>
-      </div>
-    </div>
-  </div>
-  <div className="video-grid">
-    {home.videoLanes.map(({ title, duration, copy, status }) => (
-      <div className="video-card" key={title}>
-        <div className="video-frame" aria-hidden="true">
-          <span>{duration}</span>
-        </div>
-        <div className="body">
-          <div className="lab">{status}</div>
-          <h3>{title}</h3>
-          <p>{copy}</p>
-        </div>
-      </div>
-    ))}
-  </div>
-  <div className="section-actions">
-    <a className="btn" href={`${releaseLinks.github}/blob/main/docs/VIDEO_PLAN.md`} target="_blank" rel="noopener">Review video briefs</a>
-  </div>
-</section>
-
-{/* ============================================================
-     11 — BETA STATUS
-     ============================================================ */}
-<section id="beta">
-  <div className="section-lead compact">
-    <div className="section-head">
-      <span className="eyebrow">11 — Beta status</span>
-      <h2>Public beta, not alpha. <em>Still staged where it should be.</em></h2>
-    </div>
-    <div className="section-copy-card">
-      <p>The public build focuses on local-first archival intelligence: capture, provenance, context, search, aging signals, and safe archive workflows.</p>
-      <p>Advanced automation, interop, cloud/NAS polish, speaker diarization, production multilingual OCR packs, and production OAuth remain staged or internal.</p>
-      <div className="copy-chip-row" aria-hidden="true">
-        <span>v0.2.3-beta.1</span>
-        <span>Local-first preview lane</span>
-        <span>Gated providers</span>
-      </div>
-    </div>
-  </div>
-
-  <div className="status-grid">
-    <div className="stat-card">
-      <div className="lab">Build · current</div>
-      <div className="num">v0.2<span className="small">.3</span></div>
-      <div className="sub">public media intake beta</div>
-    </div>
-    <div className="stat-card">
-      <div className="lab">Index · demo</div>
-      <div className="num">128<span className="small"> artifacts</span></div>
-      <div className="sub">32 media · 84 documents · 12 project refs</div>
-    </div>
-    <div className="stat-card">
-      <div className="lab">Custody · model</div>
-      <div className="num">Local<span className="small">-first</span></div>
-      <div className="sub">no cloud account required</div>
-    </div>
-    <div className="stat-card">
-      <div className="lab">Surfaces · external</div>
-      <div className="num">Gated</div>
-      <div className="sub">verification-dependent</div>
-    </div>
-  </div>
-
-  {/* Download CTA */}
-  <div className="cta-band" id="download">
-    <div>
-      <span className="eyebrow">Get started</span>
-      <h3>Start building an archive <em>you can actually navigate.</em></h3>
-      <p>Point CHRON.OS at a folder and let it begin organizing your documents, media, research, and projects into a connected archive you can explore and search over time.</p>
-      <div className="cta-row">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.hero.primaryCta}</a>
-        <a className="btn" href={releaseLinks.msi} target="_blank" rel="noopener">{home.release.msiCta}</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.hero.portableCta}</a>
-        <a className="btn" href={releaseLinks.github} target="_blank" rel="noopener">{home.release.githubCta}</a>
-      </div>
-      <p className="trust">{home.release.recommendation}</p>
-    </div>
-    <div className="release-panel">
-      <div className="ontology release-matrix">
-        <div className="head">
-          <span>Install · footprint</span>
-          <span className="live-dot">WINDOWS</span>
-        </div>
-        {home.release.matrix.map((row) => (
-          <div className="row release-row" key={row.term}>
-            <div className="term">{row.term}</div>
-            <div className="val">{row.value}</div>
+        <section className="chron-section chron-showcase" id="product">
+          <div className="chron-section-head">
+            <div>
+              <span className="chron-section-index">01 · PRODUCT TOUR</span>
+              <h2>See the real build.<br /><em>Not a concept render.</em></h2>
+            </div>
+            <p>
+              Every screen below was captured from v0.2.3 in an isolated empty workspace. No private archive,
+              invented activity, or hidden capability fallback.
+            </p>
           </div>
-        ))}
-      </div>
-      <div className="release-actions">
-        <a className="btn btn-primary" href={releaseLinks.installer} target="_blank" rel="noopener">{home.release.installerCta}</a>
-        <a className="btn" href={releaseLinks.msi} target="_blank" rel="noopener">{home.release.msiCta}</a>
-        <a className="btn" href={releaseLinks.portable} target="_blank" rel="noopener">{home.release.portableCta}</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-</main>
+          <div className="chron-showcase-shell">
+            <div className="chron-showcase-tabs" role="tablist" aria-label="Product screenshots">
+              {galleryShots.map((shot, index) => (
+                <button
+                  key={shot.tab}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeShot === index}
+                  className={activeShot === index ? 'active' : ''}
+                  onClick={() => setActiveShot(index)}
+                >
+                  <span>{String(index + 1).padStart(2, '0')}</span>{shot.tab}
+                </button>
+              ))}
+            </div>
 
-{/* ============================================================
-     FOOTER
-     ============================================================ */}
-<footer>
-  <div className="wrap">
-    <div className="foot-grid">
-      <div className="foot-brand">
-        <div className="footer-brand-row">
-          <img src={chronLogo} alt="CHRON.OS" />
-        </div>
-        <p>{footer.description}</p>
-      </div>
-      {footer.columns.map((column) => (
-        <div className="foot-col" key={column.title}>
-          <h6>{column.title}</h6>
-          <ul>
-            {column.links.map((link) => (
-              <li key={`${column.title}-${link.label}`}>
-                <a href={hrefFor(link.href)} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener' : undefined}>{link.label}</a>
-              </li>
+            <div className="chron-showcase-stage">
+              <div className="chron-stage-meta">
+                <span>CHR0N.OS / v0.2.3</span>
+                <span>ISOLATED DEMO / VERIFIED CAPTURE</span>
+              </div>
+              <img key={selectedShot.src} src={selectedShot.src} alt={selectedShot.alt} />
+            </div>
+
+            <div className="chron-showcase-notes">
+              <div className="chron-showcase-title">
+                <span>Selected surface</span>
+                <h3>{selectedShot.tab}</h3>
+              </div>
+              {selectedShot.panels.map((panel) => (
+                <div className="chron-note" key={panel.label}>
+                  <span>{panel.label}</span>
+                  <p>{panel.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="chron-section" id="workflow">
+          <div className="chron-section-head chron-section-head-tight">
+            <div>
+              <span className="chron-section-index">02 · THE WORKFLOW</span>
+              <h2>A memory system starts<br /><em>with a trustworthy trail.</em></h2>
+            </div>
+            <p>CHR0N.OS keeps collection, interpretation, and action as separate stages so the archive stays understandable.</p>
+          </div>
+
+          <div className="chron-workflow">
+            {workflow.map((step) => (
+              <article key={step.number}>
+                <span className="chron-step-number">{step.number}</span>
+                <div className="chron-step-line" aria-hidden="true"><i /></div>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
             ))}
-          </ul>
+          </div>
+        </section>
+
+        <section className="chron-section chron-trust" id="trust">
+          <div className="chron-trust-visual">
+            <div className="chron-image-frame">
+              <img src={asset('chronos-023-engines.png')} alt="CHR0N.OS local engine capability posture" />
+            </div>
+            <div className="chron-trust-caption">
+              <span>Capability truth</span>
+              <strong>Missing means missing.</strong>
+              <p>CHR0N.OS does not silently replace an unavailable local engine with cloud processing.</p>
+            </div>
+          </div>
+
+          <div className="chron-trust-copy">
+            <span className="chron-section-index">03 · TRUST BY CONSTRUCTION</span>
+            <h2>Control is a feature.<br /><em>Not a settings page.</em></h2>
+            <p className="chron-trust-lede">
+              The archive begins on your device. Provider state, vault posture, model availability, and proposal lanes stay visible to the operator.
+            </p>
+            <div className="chron-trust-grid">
+              <div><strong>Local-first</strong><p>No account or permanent cloud source of truth is required.</p></div>
+              <div><strong>Non-destructive</strong><p>Original files remain outside the working archive and are not rewritten.</p></div>
+              <div><strong>Explicit posture</strong><p>Unavailable engines, missing models, and metadata-only formats remain visible.</p></div>
+              <div><strong>Gated action</strong><p>Delete, move, retention, and automation require policy or operator approval.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="chron-section chron-videos" id="videos">
+          <div className="chron-section-head">
+            <div>
+              <span className="chron-section-index">04 · IN MOTION</span>
+              <h2>Watch the current build<br /><em>tell the truth.</em></h2>
+            </div>
+            <p>Two concise, silent walkthroughs from the same isolated capture session. What you see is what shipped in the public build.</p>
+          </div>
+
+          <div className="chron-video-grid">
+            {home.videoLanes.map(({ title, duration, copy, status, src, poster }, index) => (
+              <article className="chron-video-card" key={title}>
+                <div className="chron-video-wrap">
+                  <video controls preload="metadata" playsInline poster={asset(poster)} aria-label={title}>
+                    <source src={asset(src)} type="video/webm" />
+                    Your browser does not support embedded WebM video.
+                  </video>
+                  <span className="chron-video-duration">{duration}</span>
+                </div>
+                <div className="chron-video-body">
+                  <span>{String(index + 1).padStart(2, '0')} · {status}</span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="chron-section chron-beta" id="beta">
+          <div className="chron-beta-intro">
+            <span className="chron-section-index">05 · PUBLIC BETA</span>
+            <h2>A real build.<br /><em>Clear boundaries.</em></h2>
+            <p>
+              CHR0N.OS v0.2.3 is available now for Windows. It is a working public beta, not a claim of finished enterprise software.
+            </p>
+            <a className="chron-text-link" href="./CHANGELOG.md">Read what changed <span>→</span></a>
+          </div>
+          <div className="chron-scope-card chron-scope-current">
+            <div className="chron-scope-head"><span>Current build</span><strong>SHIPPED</strong></div>
+            <ul>{currentBuild.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+          <div className="chron-scope-card chron-scope-boundary">
+            <div className="chron-scope-head"><span>Beta boundaries</span><strong>READ FIRST</strong></div>
+            <ul>{betaBoundaries.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+        </section>
+
+        <section className="chron-final-cta">
+          <div className="chron-cta-mark" aria-hidden="true"><img src={asset('chronos-icon.png')} alt="" /></div>
+          <div>
+            <span className="chron-section-index">LOCAL-FIRST ARCHIVAL INTELLIGENCE</span>
+            <h2>Give important files<br /><em>a memory of their own.</em></h2>
+          </div>
+          <div className="chron-final-actions">
+            <a className="chron-button chron-button-primary chron-button-large" href={releaseLinks.installer} target="_blank" rel="noopener">Download installer <span>↗</span></a>
+            <a className="chron-text-link" href={releaseLinks.github} target="_blank" rel="noopener">View source and release notes <span>→</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="chron-footer">
+        <div className="chron-footer-brand">
+          <img src={asset('chronos-logo-horizontal.png')} alt="CHR0N.OS" />
+          <p>Local-first archival intelligence from Hyperion Industries.</p>
         </div>
-      ))}
+        <div className="chron-footer-links">
+          <a href="#product">Product</a>
+          <a href="#trust">Trust</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="contact.html">Contact</a>
+          <a href={releaseLinks.github} target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div className="chron-footer-meta">© 2026 HYPERION INDUSTRIES · PUBLIC BETA</div>
+      </footer>
     </div>
-    <div className="foot-bottom">
-      <span className="sig">{footer.bottomBrand.replace('.OS', '')}<em>.OS</em> · <a href={footer.bottomPartnerHref} style={{ color: 'var(--cyan)', textDecoration: 'none' }}>{footer.bottomPartner}</a></span>
-      <span>{footer.status}</span>
-    </div>
-  </div>
-</footer>
-    </>
   );
 }
-
