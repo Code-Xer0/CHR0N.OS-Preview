@@ -23,6 +23,11 @@ Known limitations:
 
 ## Unreleased
 
+- rebuilt the landing page around the verified v0.2.3 product captures with a product-led hero, focused walkthrough, custody workflow, trust posture, and compact beta scope
+- added a CHR0N.OS social preview card and refreshed Open Graph / X metadata for `chr0nos.app`
+- replaced placeholder gallery art and video cards with privacy-safe captures from the v0.2.3 public build
+- added two concise, silent WebM walkthroughs for the Timeline and intake capability posture
+- refreshed trust messaging to show the build's real empty-state, vault, custody, and no-silent-fallback behavior
 - adjusted public site and README posture from early preview language to Public Beta / Local-First Preview Lane
 - added public beta, internal roadmap, and video plan documentation
 - added site sections for audience fit, staged ecosystem boundary, and initial video lanes

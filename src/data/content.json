@@ -117,155 +117,115 @@
     },
     "videoLanes": [
       {
-        "title": "Public beta tour",
-        "duration": "90 sec",
-        "copy": "Show the installer lane, local intake, provenance trail, search posture, and beta boundaries using synthetic demo data.",
-        "status": "Brief ready"
+        "title": "Archive workflow",
+        "duration": "20 sec · silent",
+        "copy": "Walk through the current File Timeline in v0.2.3, captured from an isolated empty workspace with honest zero-state lanes.",
+        "status": "Latest build",
+        "src": "chronos-023-archive-workflow.webm",
+        "poster": "chronos-023-timeline.png"
       },
       {
-        "title": "Safety workflow",
-        "duration": "60 sec",
-        "copy": "Explain the trust model: copy and index first, originals untouched, destructive actions gated by explicit operator policy.",
-        "status": "Trust spot"
-      },
-      {
-        "title": "Archive policy wedge",
-        "duration": "75 sec",
-        "copy": "Frame the individual, team, and organization use cases without claiming enterprise production readiness.",
-        "status": "Commercial-safe"
+        "title": "Intake capability check",
+        "duration": "16 sec · silent",
+        "copy": "See the packaged parser and local-engine posture before intake starts. Missing models and unavailable runtimes remain explicit.",
+        "status": "Latest build",
+        "src": "chronos-023-intake-capabilities-short.webm",
+        "poster": "chronos-023-engines.png"
       }
     ],
     "gallery": [
       {
-        "tab": "Semantic Atlas",
-        "asset": "extracted_5.png",
-        "alt": "Semantic Atlas — synthetic demo domain field with clusters and relationship lines",
+        "tab": "Overview",
+        "asset": "chronos-023-overview.png",
+        "alt": "CHR0N.OS v0.2.3 archive overview in an isolated empty demo workspace",
         "panels": [
           {
-            "label": "Surface relationships",
-            "copy": "Clusters show how synthetic demo artifacts relate without exposing real archive contents."
+            "label": "Honest first-run state",
+            "copy": "Zero indexed files, zero proposals, and no invented activity in the isolated demo workspace."
           },
           {
-            "label": "Mode tabs",
-            "copy": "Field · Domain · Artifact · Lineage · Echo · Meaning. Each lens reframes the same field."
+            "label": "Working copies",
+            "copy": "The current build states the custody model up front: import copies and sidecars without rewriting originals."
           },
           {
-            "label": "Neutral demo domains",
-            "copy": "Reference PDFs · Project Briefs · Design Archive · Media Samples · Research Notes."
+            "label": "Vault posture",
+            "copy": "The interface warns when local settings and index data are not yet sealed instead of hiding the condition."
           }
         ]
       },
       {
-        "tab": "Constellation",
-        "asset": "extracted_6.png",
-        "alt": "Knowledge Constellation — synthetic demo orbital lanes around a knowledge well",
+        "tab": "Quick Intake",
+        "asset": "chronos-023-intake.png",
+        "alt": "CHR0N.OS v0.2.3 Quick Intake workspace",
         "panels": [
           {
-            "label": "Living constellation",
-            "copy": "Domains set orbital lanes. Meaning weight pulls important artifacts toward the User Knowledge Well."
+            "label": "Custody-first intake",
+            "copy": "Stage sources into CHR0N.OS custody while preserving the originals in place."
           },
           {
-            "label": "128 demo nodes · 42 links",
-            "copy": "Neutral domains across a synthetic archive. Drag to pan, click a domain to isolate."
+            "label": "Processing depth",
+            "copy": "Choose how much local processing to apply before work enters the durable queue."
           },
           {
-            "label": "User Knowledge Well",
-            "copy": "The gravitational center. Significance accumulates here over time."
+            "label": "Visible boundaries",
+            "copy": "High-stakes document review is kept in a separate, explicit lane."
           }
         ]
       },
       {
-        "tab": "Artifact Detail",
-        "asset": "extracted_7.png",
-        "alt": "Artifact detail — synthetic demo meaning panel with significance, role, and horizon",
+        "tab": "Engine Posture",
+        "asset": "chronos-023-engines.png",
+        "alt": "CHR0N.OS v0.2.3 local engine and parser capability posture",
         "panels": [
           {
-            "label": "Meaning panel",
-            "copy": "Significance, score, role, and horizon can be attached to an artifact."
+            "label": "Probe before processing",
+            "copy": "OCR, decoding, vision, and transcription report their packaged posture before intake starts."
           },
           {
-            "label": "User-confirmed outranks model",
-            "copy": "Local user-weighted context wins over inferred meaning."
+            "label": "No silent cloud fallback",
+            "copy": "A missing local engine stays unavailable; CHR0N.OS does not silently replace it with cloud processing."
           },
           {
-            "label": "Tags & concepts",
-            "copy": "brief, reference, design, media sample. Editable, traceable."
+            "label": "Explicit beta state",
+            "copy": "Model-missing, metadata-only, and unavailable capabilities remain visible to the operator."
           }
         ]
       },
       {
-        "tab": "Trace Relations",
-        "asset": "extracted_8.png",
-        "alt": "Trace relations — follow lineage between source documents and derivatives",
+        "tab": "Timeline",
+        "asset": "chronos-023-timeline.png",
+        "alt": "CHR0N.OS v0.2.3 file timeline with source, archive, inferred, and review lanes",
         "panels": [
           {
-            "label": "Trace relations",
-            "copy": "Every related artifact, every shared domain, every chain of inheritance — kept and walkable."
+            "label": "Separate date lanes",
+            "copy": "Source, archive, inferred, unknown, correction, suggestion, and policy events stay distinguishable."
           },
           {
-            "label": "Cross-form trails",
-            "copy": "Briefs, notes, media samples, and design references stay on the same field."
+            "label": "Operator visibility",
+            "copy": "Each lane states whether evidence is operator-visible or proposal-only."
           },
           {
-            "label": "No data is orphaned",
-            "copy": "If it entered the archive, the path back is preserved."
+            "label": "Truthful empty state",
+            "copy": "The empty demo shows zero events and no fabricated history."
           }
         ]
       },
       {
         "tab": "Archivist",
-        "asset": "extracted_9.png",
-        "alt": "Archivist — chat surface ready with archive context",
+        "asset": "chronos-023-archivist.png",
+        "alt": "CHR0N.OS v0.2.3 Archivist workspace in an isolated empty demo archive",
         "panels": [
           {
-            "label": "Ready with context",
-            "copy": "Ask Archivist to find files, explain structure, create folders, or review the ontology."
+            "label": "Archive-aware assistant",
+            "copy": "Ask Archivist to find files, explain structure, or review organization from one workspace."
           },
           {
-            "label": "Local history",
-            "copy": "Pane and bubble share the same local history. Stays on this device unless context is required."
+            "label": "Empty archive honesty",
+            "copy": "The current build reports that zero files are indexed and avoids fabricating archive context."
           },
           {
-            "label": "Operational",
-            "copy": "archivist-system / v0.2.3 · synthetic demo context."
-          }
-        ]
-      },
-      {
-        "tab": "Dashboard",
-        "asset": "extracted_10.png",
-        "alt": "Dashboard — domains, document forms, significance, temporal activity",
-        "panels": [
-          {
-            "label": "Domains, forms, significance",
-            "copy": "Demo counts for reference PDFs, notes, briefs, media samples, and design archive items."
-          },
-          {
-            "label": "Temporal activity",
-            "copy": "Ledger anchors by age window — 7d · 30d · 90d · older."
-          },
-          {
-            "label": "Recent / high salience",
-            "copy": "Recent demo items and high-salience examples, surfaced together."
-          }
-        ]
-      },
-      {
-        "tab": "Files",
-        "asset": "extracted_11.png",
-        "alt": "Local source browser — preview originals without mutating them",
-        "panels": [
-          {
-            "label": "Local source browser",
-            "copy": "Inspect file weight; copy selected sources into CHRON.OS without changing the original."
-          },
-          {
-            "label": "Originals untouched",
-            "copy": "Working copies only. Source paths and timestamps preserved."
-          },
-          {
-            "label": "Quick places",
-            "copy": "Home · Downloads · Documents · Current root. Pin any drive."
+            "label": "Public beta capture",
+            "copy": "Captured directly from v0.2.3 build 20260728-public-media-intake-v1 using an isolated empty workspace."
           }
         ]
       }
