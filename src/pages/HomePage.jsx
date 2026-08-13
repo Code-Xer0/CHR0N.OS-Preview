@@ -142,8 +142,8 @@ export default function HomePage() {
               <h2>See the real build.<br /><em>Not a concept render.</em></h2>
             </div>
             <p>
-              Every screen below was captured from v0.2.3 in an isolated empty workspace. No private archive,
-              invented activity, or hidden capability fallback.
+              Every screen below was captured from v0.2.3 in isolated demo workspaces. Populated views use
+              fictional Project Aurora files — never a private archive or hidden capability fallback.
             </p>
           </div>
 
@@ -240,7 +240,7 @@ export default function HomePage() {
               <span className="chron-section-index">04 · IN MOTION</span>
               <h2>Watch the current build<br /><em>tell the truth.</em></h2>
             </div>
-            <p>Two concise, silent walkthroughs from the same isolated capture session. What you see is what shipped in the public build.</p>
+            <p>Two concise, silent walkthroughs from an isolated synthetic ingest session. What you see is the public build working with fictional data.</p>
           </div>
 
           <div className="chron-video-grid">
