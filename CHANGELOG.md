@@ -23,6 +23,8 @@ Known limitations:
 
 ## Unreleased
 
+- replaced the longer low-motion walkthroughs with two action-driven seven-second captures using a synthetic Project Aurora ingest pack
+- added completed-intake, populated Timeline, and ingested Library gallery views from the verified v0.2.3 build
 - rebuilt the landing page around the verified v0.2.3 product captures with a product-led hero, focused walkthrough, custody workflow, trust posture, and compact beta scope
 - added a CHR0N.OS social preview card and refreshed Open Graph / X metadata for `chr0nos.app`
 - replaced placeholder gallery art and video cards with privacy-safe captures from the v0.2.3 public build

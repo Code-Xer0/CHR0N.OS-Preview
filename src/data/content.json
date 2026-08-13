@@ -117,20 +117,20 @@
     },
     "videoLanes": [
       {
-        "title": "Archive workflow",
-        "duration": "20 sec · silent",
-        "copy": "Walk through the current File Timeline in v0.2.3, captured from an isolated empty workspace with honest zero-state lanes.",
-        "status": "Latest build",
-        "src": "chronos-023-archive-workflow.webm",
-        "poster": "chronos-023-timeline.png"
+        "title": "Intake in motion",
+        "duration": "7 sec · silent",
+        "copy": "See four fictional files stage, enter the durable queue, and complete metadata-only intake while the originals remain untouched.",
+        "status": "Latest build · synthetic demo",
+        "src": "chronos-023-ingest-workflow-tight.webm",
+        "poster": "chronos-023-ingest-complete.png"
       },
       {
-        "title": "Intake capability check",
-        "duration": "16 sec · silent",
-        "copy": "See the packaged parser and local-engine posture before intake starts. Missing models and unavailable runtimes remain explicit.",
-        "status": "Latest build",
-        "src": "chronos-023-intake-capabilities-short.webm",
-        "poster": "chronos-023-engines.png"
+        "title": "Archive after intake",
+        "duration": "7 sec · silent",
+        "copy": "Follow ten fictional artifacts into the Archive date lane, then filter the ingested library to its technical records.",
+        "status": "Latest build · synthetic demo",
+        "src": "chronos-023-ingested-archive-tour-tight.webm",
+        "poster": "chronos-023-timeline-ingested.png"
       }
     ],
     "gallery": [
@@ -154,21 +154,21 @@
         ]
       },
       {
-        "tab": "Quick Intake",
-        "asset": "chronos-023-intake.png",
-        "alt": "CHR0N.OS v0.2.3 Quick Intake workspace",
+        "tab": "Completed Intake",
+        "asset": "chronos-023-ingest-complete.png",
+        "alt": "CHR0N.OS v0.2.3 durable queue after completing fictional Project Aurora intake files",
         "panels": [
           {
-            "label": "Custody-first intake",
-            "copy": "Stage sources into CHR0N.OS custody while preserving the originals in place."
+            "label": "Durable queue",
+            "copy": "Four synthetic sources move from local staging into completed durable jobs in seconds."
           },
           {
-            "label": "Processing depth",
-            "copy": "Choose how much local processing to apply before work enters the durable queue."
+            "label": "Visible evidence",
+            "copy": "Each result shows its working-copy classification, format, tags, and completion state."
           },
           {
-            "label": "Visible boundaries",
-            "copy": "High-stakes document review is kept in a separate, explicit lane."
+            "label": "Synthetic and local",
+            "copy": "The capture uses fictional Project Aurora records in an isolated archive with metadata-only processing."
           }
         ]
       },
@@ -193,20 +193,39 @@
       },
       {
         "tab": "Timeline",
-        "asset": "chronos-023-timeline.png",
-        "alt": "CHR0N.OS v0.2.3 file timeline with source, archive, inferred, and review lanes",
+        "asset": "chronos-023-timeline-ingested.png",
+        "alt": "CHR0N.OS v0.2.3 timeline showing ten fictional artifacts in the Archive date lane",
         "panels": [
           {
             "label": "Separate date lanes",
             "copy": "Source, archive, inferred, unknown, correction, suggestion, and policy events stay distinguishable."
           },
           {
-            "label": "Operator visibility",
-            "copy": "Each lane states whether evidence is operator-visible or proposal-only."
+            "label": "Ingest evidence",
+            "copy": "Ten synthetic artifacts appear in the operator-visible Archive date lane after intake."
           },
           {
-            "label": "Truthful empty state",
-            "copy": "The empty demo shows zero events and no fabricated history."
+            "label": "Honest empty lanes",
+            "copy": "Unused inferred, correction, suggestion, policy, and external-context lanes remain at zero."
+          }
+        ]
+      },
+      {
+        "tab": "Ingested Library",
+        "asset": "chronos-023-library-ingested.png",
+        "alt": "CHR0N.OS v0.2.3 library showing fictional Project Aurora artifacts after intake",
+        "panels": [
+          {
+            "label": "Working-copy catalog",
+            "copy": "The library brings ingested artifacts, formats, tags, and meaning posture into one review surface."
+          },
+          {
+            "label": "Useful filtering",
+            "copy": "A technical dimension narrows the synthetic archive to its CSV and JSON records."
+          },
+          {
+            "label": "Review remains explicit",
+            "copy": "Inferred context is presented as reviewable metadata, not silent publication or source mutation."
           }
         ]
       },
