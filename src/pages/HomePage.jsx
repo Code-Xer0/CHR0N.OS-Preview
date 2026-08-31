@@ -73,6 +73,7 @@ export default function HomePage() {
           <a href="#workflow">Workflow</a>
           <a href="#trust">Trust</a>
           <a href="#videos">Videos</a>
+          <a href="#services">Services</a>
           <a href="#beta">Beta</a>
         </nav>
         <div className="chron-nav-actions">
@@ -263,9 +264,32 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="chron-section chron-services" id="services">
+          <div className="chron-section-head">
+            <div>
+              <span className="chron-section-index">05 · GUIDED SERVICES</span>
+              <h2>Use the beta yourself.<br /><em>Bring Hyperion when it matters.</em></h2>
+            </div>
+            <p>The software remains publicly available. Paid work adds a bounded assessment, guided setup, reviewed migration, or team continuity design—not a hidden license gate.</p>
+          </div>
+          <div className="chron-service-grid">
+            {home.services.map((service) => (
+              <article className="chron-service-card" key={service.id}>
+                <span>CHR0N.OS SERVICE</span>
+                <h3>{service.name}</h3>
+                <strong>{service.price}</strong>
+                <p>{service.copy}</p>
+                <ul>{service.deliverables.map((item) => <li key={item}>{item}</li>)}</ul>
+                <a href={`https://hyperion-industries.dev/intake/continuity?service=${service.id}&source=chronos-app`}>Start this brief <b>→</b></a>
+              </article>
+            ))}
+          </div>
+          <div className="chron-service-boundary">PROPOSAL FIRST · NO ONE-CLICK ORDER · PAYMENT FOLLOWS REVIEWED SCOPE</div>
+        </section>
+
         <section className="chron-section chron-beta" id="beta">
           <div className="chron-beta-intro">
-            <span className="chron-section-index">05 · PUBLIC BETA</span>
+            <span className="chron-section-index">06 · PUBLIC BETA</span>
             <h2>A real build.<br /><em>Clear boundaries.</em></h2>
             <p>
               CHR0N.OS v0.2.3 is available now for Windows. It is a working public beta, not a claim of finished enterprise software.
@@ -303,6 +327,7 @@ export default function HomePage() {
         <div className="chron-footer-links">
           <a href="#product">Product</a>
           <a href="#trust">Trust</a>
+          <a href="#services">Services</a>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
           <a href="contact.html">Contact</a>

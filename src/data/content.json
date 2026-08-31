@@ -115,6 +115,36 @@
         "unbounded media processing beyond beta resource guards"
       ]
     },
+    "services": [
+      {
+        "id": "assessment",
+        "name": "Archive Assessment",
+        "price": "$149",
+        "copy": "A bounded review of the archive, failure mode, custody posture, and first recovery sequence.",
+        "deliverables": ["60-minute working session", "Archive risk map", "Prioritized next-step brief"]
+      },
+      {
+        "id": "setup",
+        "name": "CHR0N.OS Setup",
+        "price": "$399",
+        "copy": "A guided local installation, initial archive structure, and operator handoff for one workstation.",
+        "deliverables": ["Public beta installation", "Initial archive configuration", "Recorded operating notes"]
+      },
+      {
+        "id": "migration",
+        "name": "Archive Migration",
+        "price": "From $900",
+        "copy": "A reviewed migration plan for scattered files and project records, with provenance preserved.",
+        "deliverables": ["Source inventory", "Migration and rollback plan", "Reviewed intake execution"]
+      },
+      {
+        "id": "team",
+        "name": "Team Continuity Setup",
+        "price": "From $2,000",
+        "copy": "A scoped team archive and handoff system with ownership, retention, and support boundaries.",
+        "deliverables": ["Team workflow mapping", "Custody and access posture", "Implementation proposal"]
+      }
+    ],
     "videoLanes": [
       {
         "title": "Intake in motion",
